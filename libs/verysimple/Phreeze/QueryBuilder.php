@@ -66,7 +66,7 @@
 		if (isset($this->_keymapcache[$typename]))
 		{
 			// return;  // TODO: why doesn't this work..?
-			throw new Exception("A circular EAGER join was detected while parsing `$typename`.  This is possibly due to an EAGER join with `".$this->_prevkeymap."`  Please edit your Map so that at least one side of the join is LAZY.");
+			throw new Exception("Uma junção EAGER circular foi detectada durante a análise `$typename`.  Isto é possivelmente devido a um EAGER se juntar com `".$this->_prevkeymap."`  Edite seu Mapa para que pelo menos um dos lados da associação seja LAZY.");
 		}
 
 		// first we just add the basic columns of this object
@@ -92,7 +92,7 @@
 				if (isset($this->Joins[$km->ForeignObject . "_is_joined"]))
 				{
 					//print_r($typename);
-					throw new Exception($typename ."Map has multiple EAGER joins to `" . $km->ForeignObject . "` which is not yet supported by Phreeze.");
+					throw new Exception($typename ."O mapa tem várias associações EAGER para `" . $km->ForeignObject . "` Que ainda não é suportado por Phreeze.");
 				}
 				
 				$ffms = $this->_phreezer->GetFieldMaps($km->ForeignObject);
@@ -161,9 +161,9 @@
 				catch (Exception $ex)
 				{
 					// if 'undefined index' occurs here, there is likely a foreign field in the fieldmap that does not have it's related keymap set to KM_LOAD_EAGER
-					throw new Exception("An invalid join was attempted from table '" . $tablenames[$i] 
-						. "'. Please verify that the KeyMap fetching strategy for table '" . $tablenames[0]
-						. "' has been properly configured.");
+					throw new Exception("Uma associação inválida foi tentada a partir da tabela '" . $tablenames[$i] 
+						. "'. Verifique se a estratégia de busca do KeyMap para a tabela '" . $tablenames[0]
+						. "' foi configurado corretamente.");
 				}
 			}
 		}

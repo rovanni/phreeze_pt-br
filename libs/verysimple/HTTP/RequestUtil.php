@@ -95,7 +95,7 @@ class RequestUtil
 	{
 		$url = self::GetCurrentURL(false);
 		$parts = explode('/', $url);
-		if (count($parts) < 2) throw new Exception('RequestUtil is unable to determine the server root');
+		if (count($parts) < 2) throw new Exception('RequestUtil é incapaz de determinar a raiz do servidor');
 		return $parts[0] . '//' . $parts[2] . '/';
 	}
 
@@ -327,7 +327,7 @@ class RequestUtil
 			{
 				return null;
 			}
-			throw new Exception("\$_FILES['".$fieldname."'] is empty.  Did you forget to add enctype='multipart/form-data' to your form code?");
+			throw new Exception("\$_FILES['".$fieldname."'] is empty.  Você se esqueceu de adicionar enctype='multipart/form-data' ao seu código de formulário?");
 		}
 
 		// make sure a file was actually uploaded, otherwise return null
@@ -342,12 +342,12 @@ class RequestUtil
 		// make sure there were no errors during upload, but ignore case where
 		if ($upload['error'])
 		{
-			$error_codes[0] = "The file uploaded with success.";
-			$error_codes[1] = "The uploaded file exceeds the upload_max_filesize directive in php.ini.";
-			$error_codes[2] = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form.";
-			$error_codes[3] = "The uploaded file was only partially uploaded.";
-			$error_codes[4] = "No file was uploaded.";
-			throw new Exception("Error uploading file: " . $error_codes[$upload['error']]);
+			$error_codes[0] = "O arquivo foi carregado com sucesso.";
+			$error_codes[1] = "O arquivo enviado excede a diretiva upload_max_filesize no php.ini.";
+			$error_codes[2] = "O arquivo enviado excede a diretiva MAX_FILE_SIZE que foi especificada no formulário html.";
+			$error_codes[3] = "O arquivo enviado foi carregado apenas parcialmente.";
+			$error_codes[4] = "Nenhum arquivo foi carregado.";
+			throw new Exception("Erro ao carregar o arquivo: " . $error_codes[$upload['error']]);
 		}
 
 		// backwards compatibility
@@ -356,7 +356,7 @@ class RequestUtil
 		// make sure this is a legit file request
 		if ( self::$VALIDATE_FILE_UPLOAD && is_uploaded_file($upload['tmp_name']) == false )
 		{
-			throw new Exception("Unable to access this upload: " . $fieldname);
+			throw new Exception("Não foi possível acessar este upload: " . $fieldname);
 		}
 
 		// get the filename and Extension
@@ -373,12 +373,12 @@ class RequestUtil
 
 		if ($ok_types && !in_array($fupload->Extension, $ok_types) )
 		{
-			throw new Exception("The file '".htmlentities($fupload->Name)."' is not a type that is allowed.  Allowed file types are: " . (implode(", ",$ok_types)) . ".");
+			throw new Exception("The file '".htmlentities($fupload->Name)."' Não é um tipo que é permitido. Os tipos de arquivo permitidos são: " . (implode(", ",$ok_types)) . ".");
 		}
 
 		if ($max_kb && ($fupload->Size/1024) > $max_kb)
 		{
-			throw new Exception("The file '".htmlentities($fupload->Name)."' is to large.  Maximum allowed size is " . number_format($max_kb/1024,2) . "Mb");
+			throw new Exception("O arquivo '".htmlentities($fupload->Name)."' é grande. O tamanho máximo permitido é " . number_format($max_kb/1024,2) . "Mb");
 		}
 
 		// open the file and read the entire contents

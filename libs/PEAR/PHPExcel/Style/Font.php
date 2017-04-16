@@ -218,7 +218,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Invalid style array passed.");
+			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
 		}
 		return $this;
 	}

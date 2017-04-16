@@ -152,13 +152,13 @@ class Phreezer extends Observable
 	public function SelectAdapter($key = null)
 	{
 		if ($key) {
-			$this->Observe("Selecting DataAdapter with key '$key'",OBSERVE_DEBUG);
+			$this->Observe("Selecionando DataAdapter com chave '$key'",OBSERVE_DEBUG);
 			if (!array_key_exists($key, $this->DataAdapters))
-				throw new Exception("No DataAdapter with key '$key' is available");
+				throw new Exception("Nenhum DataAdapter com chave '$key' está disponível");
 			$this->DataAdapter = $this->DataAdapters[$key];
 		}
 		else {
-			$this->Observe("Selecting Default DataAdapter",OBSERVE_DEBUG);
+			$this->Observe("Selecionando o DataAdapter Padrão",OBSERVE_DEBUG);
 			$adapters = array_values($this->DataAdapters);
 			$this->DataAdapter = $adapters[0];
 		}
@@ -254,7 +254,7 @@ class Phreezer extends Observable
 
 		if ($obj && $obj->serialize() == $val->serialize())
 		{
-			$this->Observe("TYPE='$objectclass' ID='$id' level 1 cache has not changed.  SetCache was supressed",OBSERVE_DEBUG);
+			$this->Observe("TYPE='$objectclass' ID='$id' o cache de nível 1 não foi alterado. SetCache foi suprimido",OBSERVE_DEBUG);
 			return false;
 		}
 
@@ -284,7 +284,7 @@ class Phreezer extends Observable
 
 		if ($obj)
 		{
-			$this->Observe("Retrieved TYPE='$objectclass' ID='$id' from 1st Level Cache",OBSERVE_DEBUG);
+			$this->Observe("Retrieved TYPE='$objectclass' ID='$id' de cache de primeiro nível",OBSERVE_DEBUG);
 			$obj->CacheLevel(1);
 			if (!$obj->IsLoaded()) $obj->Refresh($this);
 			return $obj;
@@ -295,7 +295,7 @@ class Phreezer extends Observable
 
 		if ($obj)
 		{
-			$this->Observe("Retrieved TYPE='$objectclass' ID='$id' from 2nd Level Cache",OBSERVE_DEBUG);
+			$this->Observe("Retrieved TYPE='$objectclass' ID='$id' a partir do segundo nível de cache",OBSERVE_DEBUG);
 			$obj->Refresh($this);
 			$obj->CacheLevel(2);
 
@@ -365,7 +365,7 @@ class Phreezer extends Observable
 
 		if (strlen($objectclass) < 1)
 		{
-			throw new Exception("\$objectclass argument is required");
+			throw new Exception("\$objectclass Argumento é necessário");
 		}
 
 		$obj = null;
@@ -374,12 +374,12 @@ class Phreezer extends Observable
 		if (count($objs) == 0)
 		{
 			require_once("NotFoundException.php");
-			throw new NotFoundException("$objectclass with specified criteria not found");
+			throw new NotFoundException("$objectclass com critérios especificados não encontrados");
 		}
 
 		if ($crash_if_multiple_found && count($objs) > 1)
 		{
-			throw new Exception("More than one $objectclass with specified criteria was found");
+			throw new Exception("Mais de um $objectclass com critérios especificados foi encontrado");
 		}
 		
 		$obj = $objs[0];
@@ -402,7 +402,7 @@ class Phreezer extends Observable
 
 		if (strlen($objectclass) < 1)
 		{
-			throw new Exception("\$objectclass argument is required");
+			throw new Exception("\$objectclass argumento é necessário");
 		}
 
 		// if criteria is null, then create a generic one
@@ -419,7 +419,7 @@ class Phreezer extends Observable
 
 		if ($custom)
 		{
-			$this->Observe("Using Custom Query",OBSERVE_DEBUG);
+			$this->Observe("Usando consulta personalizada",OBSERVE_DEBUG);
 			$sql = $custom;
 
 			// the counter query may be blank, in which case DataSet will generate one
@@ -464,11 +464,11 @@ class Phreezer extends Observable
 
 		if (strlen($objectclass) < 1)
 		{
-			throw new Exception("\$objectclass argument is required");
+			throw new Exception("\$objectclass argumento é necessário para");
 		}
 		if (strlen($id) < 1)
 		{
-			throw new Exception("\$id argument is required for $objectclass");
+			throw new Exception("\$id argumento é necessário para $objectclass");
 		}
 
 		// see if this object was cached & if so return it
@@ -477,7 +477,7 @@ class Phreezer extends Observable
 
 		$pkm = $this->GetPrimaryKeyMap($objectclass);
 
-		if (!$pkm) throw new Exception("Table for '$objectclass' has no primary key");
+		if (!$pkm) throw new Exception("Tabela para '$objectclass' não tem chave primária");
 
 		$criteria = new Criteria();
 		$criteria->PrimaryKeyField = "`" . $pkm->TableName . "`.`" . $pkm->ColumnName . "`";
@@ -491,7 +491,7 @@ class Phreezer extends Observable
 		if (!$obj = $ds->Next())
 		{
 			require_once("NotFoundException.php");
-			throw new NotFoundException("$objectclass with primary key of $id not found");
+			throw new NotFoundException("$objectclass com chave primária de $id não encontrado");
 		}
 
 		// cache the object for future use
@@ -531,7 +531,7 @@ class Phreezer extends Observable
 		$this->Observe("Firing ".get_class($obj)."->OnSave($is_insert)",OBSERVE_DEBUG);
 		if (!$obj->OnSave($is_insert))
 		{
-			$this->Observe("".get_class($obj)."->OnSave($is_insert) returned FALSE.  Exiting without saving",OBSERVE_WARN);
+			$this->Observe("".get_class($obj)."->OnSave($is_insert) returned FALSE.  Saindo sem salvar",OBSERVE_WARN);
 			return false;
 		}
 
@@ -559,7 +559,7 @@ class Phreezer extends Observable
 					}
 					catch (Exception $ex)
 					{
-						throw new Exception("Error escaping property '$prop'. value could not be converted to string");
+						throw new Exception("Erro ao escapar da propriedade '$prop'. valor não pôde ser convertido em sequência de caracteres");
 					}
 
 					$delim = ", ";
@@ -611,7 +611,7 @@ class Phreezer extends Observable
 						}
 						catch (Exception $ex)
 						{
-							throw new Exception("Error escaping property '$prop'. value could not be converted to string");
+							throw new Exception("Erro ao escapar da propriedade '$prop'. valor não pôde ser convertido em seqüência de caracteres");
 						}
 
 						$delim = ", ";
@@ -645,7 +645,7 @@ class Phreezer extends Observable
 
 		if (!$obj->OnBeforeDelete())
 		{
-			$this->Observe("Delete was cancelled because OnBeforeDelete did not return true");
+			$this->Observe("A exclusão foi cancelada porque OnBeforeDelete não retornou true");
 			return 0;
 		}
 
@@ -702,7 +702,7 @@ class Phreezer extends Observable
 
 		$this->IncludeModel($objectclass);
 
-		if (!class_exists($objectclass."Map")) throw new Exception($objectclass . " must either implement GetCustomQuery or '" . $objectclass."Map' class must exist in the include path.");
+		if (!class_exists($objectclass."Map")) throw new Exception($objectclass . " deve implementar GetCustomQuery ou '" . $objectclass."Map' classe deve existir no caminho de inclusão.");
 		$fms = call_user_func( array($objectclass."Map","GetFieldMaps") );
 
 		$this->_mapCache->Set($objectclass."FieldMaps",$fms);
@@ -761,7 +761,7 @@ class Phreezer extends Observable
 		if ($kms) return $kms;
 
 		$this->IncludeModel($objectclass);
-		if (!class_exists($objectclass."Map")) throw new Exception("Class '" . $objectclass."Map' is not defined.");
+		if (!class_exists($objectclass."Map")) throw new Exception("Class '" . $objectclass."Map' não está definido.");
 		$kms = call_user_func( array($objectclass."Map","GetKeyMaps") );
 
 		$this->_mapCache->Set($objectclass."KeyMaps",$kms);

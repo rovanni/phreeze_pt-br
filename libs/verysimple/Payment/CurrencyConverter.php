@@ -47,13 +47,13 @@ class CurrencyConverter
 			else
 			{
 				// this should never occur unless google changes the output formatting of the search results
-				throw new Exception("Unable to parse response from google");
+				throw new Exception("Não foi possível analisar a resposta do Google");
 			}
 			
 		}
 		else
 		{
-			throw new Exception("The google search result does not appear to contain currency information");
+			throw new Exception("O resultado da pesquisa do Google não parece conter informações sobre moedas");
 		}
 		
 		return $converted_amount;

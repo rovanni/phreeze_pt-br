@@ -42,7 +42,7 @@ class GeneratorController extends BaseController
 		// check for all required fields
 		if ( empty($_REQUEST["table_name"]) )
 		{
-			throw new Exception("Please select at least one table to generate");
+			throw new Exception("Selecione pelo menos uma tabela para gerar");
 		}
 
 		$cstring = $this->GetConnectionString();

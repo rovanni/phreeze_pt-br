@@ -64,14 +64,14 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 		$this->_hShm = shm_attach(mt_rand(), self::SHM_SIZE);
 		if ($this->_hShm === false) {
 			throw new ApnsPHP_Push_Server_Exception(
-				'Unable to get shared memory segment'
+				'Não é possível obter segmento de memória compartilhada'
 			);
 		}
 
 		$this->_hSem = sem_get(mt_rand());
 		if ($this->_hSem === false) {
 			throw new ApnsPHP_Push_Server_Exception(
-				'Unable to get semaphore id'
+				'Não é possível obter o ID do semáforo'
 			);
 		}
 
@@ -126,13 +126,13 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 			case SIGQUIT:
 			case SIGINT:
 				if (($nPid = posix_getpid()) != $this->_nParentPid) {
-					$this->_log("INFO: Child $nPid received signal #{$nSignal}, shutdown...");
+					$this->_log("INFO: Child $nPid sinal recebido #{$nSignal}, desligar...");
 					$this->_nRunningProcesses--;
 					exit(0);
 				}
 				break;
 			default:
-				$this->_log("INFO: Ignored signal #{$nSignal}.");
+				$this->_log("INFO: sinal ignorado #{$nSignal}.");
 				break;
 		}
 	}
@@ -146,7 +146,7 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 	public function onShutdown()
 	{
 		if (posix_getpid() == $this->_nParentPid) {
-			$this->_log('INFO: Parent shutdown, cleaning memory...');
+			$this->_log('INFO: desligamento pai, limpeza de memória...');
 			@shm_remove($this->_hShm) && @shm_detach($this->_hShm);
 			@sem_remove($this->_hSem);
 		}
@@ -178,17 +178,17 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 			$this->_nCurrentProcess = $i;
 			$this->_aPids[$i] = $nPid = pcntl_fork();
 			if ($nPid == -1) {
-				$this->_log('WARNING: Could not fork');
+				$this->_log('AVISO: Não foi possível');
 			} else if ($nPid > 0) {
 				// Parent process
-				$this->_log("INFO: Forked process PID {$nPid}");
+				$this->_log("INFO: Processo bifurcado PID {$nPid}");
 				$this->_nRunningProcesses++;
 			} else {
 				// Child process
 				try {
 					parent::connect();
 				} catch (ApnsPHP_Exception $e) {
-					$this->_log('ERROR: ' . $e->getMessage() . ', exiting...');
+					$this->_log('ERROR: ' . $e->getMessage() . ', saindo...');
 					exit(1);
 				}
 				$this->_mainLoop();
@@ -276,7 +276,7 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 			pcntl_signal_dispatch();
 
 			if (posix_getppid() != $this->_nParentPid) {
-				$this->_log("INFO: Parent process {$this->_nParentPid} died unexpectedly, exiting...");
+				$this->_log("INFO: Processo pai {$this->_nParentPid} morreu inesperadamente, saindo...");
 				break;
 			}
 
@@ -294,7 +294,7 @@ class ApnsPHP_Push_Server extends ApnsPHP_Push
 
 			$nMessages = count($aQueue);
 			if ($nMessages > 0) {
-				$this->_log('INFO: Process ' . ($this->_nCurrentProcess + 1) . " has {$nMessages} messages, sending...");
+				$this->_log('INFO: Processo ' . ($this->_nCurrentProcess + 1) . " tem {$nMessages} mensagens, envio...");
 				parent::send();
 			} else {
 				usleep(self::MAIN_LOOP_USLEEP);

@@ -43,7 +43,7 @@ class DataDriverMySQLi implements IDataDriver
 	 */
 	function Open($connectionstring,$database,$username,$password,$charset='',$bootstrap='') 
 	{
-		if (!function_exists("mysqli_connect")) throw new DatabaseException('mysqli extension is not enabled on this server.',DatabaseException::$CONNECTION_ERROR);
+		if (!function_exists("mysqli_connect")) throw new DatabaseException('A extensão mysqli não está habilitada neste servidor.',DatabaseException::$CONNECTION_ERROR);
 		
 		// if the port is provided in the connection string then strip it out and provide it as a separate param
 		$hostAndPort = explode(":",$connectionstring);
@@ -54,7 +54,7 @@ class DataDriverMySQLi implements IDataDriver
 		
 		if ( mysqli_connect_errno() )
 		{
-			throw new DatabaseException("Error connecting to database: " . mysqli_connect_error(),DatabaseException::$CONNECTION_ERROR);
+			throw new DatabaseException("Erro ao conectar-se ao banco de dados: " . mysqli_connect_error(),DatabaseException::$CONNECTION_ERROR);
 		}
 		
 		if ($charset)
@@ -63,7 +63,7 @@ class DataDriverMySQLi implements IDataDriver
 			
 			if ( mysqli_connect_errno() )
 			{
-				throw new DatabaseException("Unable to set charset: " . mysqli_connect_error(),DatabaseException::$CONNECTION_ERROR);
+				throw new DatabaseException("Não foi possível definir o charset: " . mysqli_connect_error(),DatabaseException::$CONNECTION_ERROR);
 			}
 		}
 		
@@ -78,7 +78,7 @@ class DataDriverMySQLi implements IDataDriver
 				}
 				catch (Exception $ex)
 				{
-					throw new DatabaseException("problem with bootstrap sql: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
+					throw new DatabaseException("Problema com bootstrap sql: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
 				}
 			}
 		}

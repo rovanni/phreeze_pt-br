@@ -200,16 +200,16 @@ class CF_Authentication
                 $this->account_name, $this->auth_host);
 
         if ($status == 401) {
-            throw new AuthenticationException("Invalid username or access key.");
+            throw new AuthenticationException("Nome de usuário inválido ou chave de acesso.");
         }
         if ($status != 204) {
             throw new InvalidResponseException(
-                "Unexpected response (".$status."): ".$reason);
+                "Resposta inesperada (".$status."): ".$reason);
         }
 
         if (!($surl || $curl) || !$atoken) {
             throw new InvalidResponseException(
-                "Expected headers missing from auth service.");
+                "Cabeçalhos esperados em falta do serviço de autenticação.");
         }
         $this->storage_url = $surl;
         $this->cdnm_url = $curl;
@@ -368,7 +368,7 @@ class CF_Connection
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return array($container_count, $total_bytes);
     }
@@ -396,7 +396,7 @@ class CF_Connection
     function create_container($container_name=NULL)
     {
         if (!$container_name) {
-            throw new SyntaxException("Container name not set.");
+            throw new SyntaxException("O nome do recipiente não está definido.");
         }
         if (strpos($container_name, "/") !== False) {
             $r = "Container name '".$container_name;
@@ -405,13 +405,13 @@ class CF_Connection
         }
         if (strlen($container_name) > MAX_CONTAINER_NAME_LEN) {
             throw new SyntaxException(sprintf(
-                "Container name exeeds %d bytes.",
+                "O nome do contêiner excede %d bytes.",
                 MAX_CONTAINER_NAME_LEN));
         }
 
         $return_code = $this->cfs_http->create_container($container_name);
         if (!$return_code) {
-            throw new InvalidResponseException("Invalid response ("
+            throw new InvalidResponseException("Resposta inválida ("
                 . $return_code. "): " . $this->cfs_http->get_error());
         }
         #if ($status == 401 && $this->_re_auth()) {
@@ -419,7 +419,7 @@ class CF_Connection
         #}
         if ($return_code != 201 && $return_code != 202) {
             throw new InvalidResponseException(
-                "Invalid response (".$return_code."): "
+                "Resposta inválida (".$return_code."): "
                     . $this->cfs_http->get_error());
         }
         return new CF_Container($this->cfs_auth, $this->cfs_http, $container_name);
@@ -460,28 +460,28 @@ class CF_Connection
             $container_name = $container;
         }
         if (!$container_name) {
-            throw new SyntaxException("Must specify container object or name.");
+            throw new SyntaxException("Tem de especificar o objecto ou nome do container .");
         }
 
         $return_code = $this->cfs_http->delete_container($container_name);
 
         if (!$return_code) {
-            throw new InvalidResponseException("Failed to obtain http response");
+            throw new InvalidResponseException("Falha ao obter resposta http");
         }
         #if ($status == 401 && $this->_re_auth()) {
         #    return $this->delete_container($container);
         #}
         if ($return_code == 409) {
             throw new NonEmptyContainerException(
-                "Container must be empty prior to removing it.");
+                "O recipiente deve estar vazio antes de removê-lo.");
         }
         if ($return_code == 404) {
             throw new NoSuchContainerException(
-                "Specified container did not exist to delete.");
+                "O container especificado não existe para excluir.");
         }
         if ($return_code != 204) {
             throw new InvalidResponseException(
-                "Invalid response (".$return_code."): "
+                "Resposta inválida (".$return_code."): "
                 . $this->cfs_http->get_error());
         }
         return True;
@@ -517,11 +517,11 @@ class CF_Connection
         #    return $this->get_container($container_name);
         #}
         if ($status == 404) {
-            throw new NoSuchContainerException("Container not found.");
+            throw new NoSuchContainerException("Container não encontrado.");
         }
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response: ".$this->cfs_http->get_error());
+                "Resposta inválida: ".$this->cfs_http->get_error());
         }
         return new CF_Container($this->cfs_auth, $this->cfs_http,
             $container_name, $count, $bytes);
@@ -560,7 +560,7 @@ class CF_Connection
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response: ".$this->cfs_http->get_error());
+                "Resposta inválida: ".$this->cfs_http->get_error());
         }
         $containers = array();
         foreach ($container_info as $name => $info) {
@@ -604,7 +604,7 @@ class CF_Connection
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return $containers;
     }
@@ -652,7 +652,7 @@ class CF_Connection
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return $container_info;
     }
@@ -693,7 +693,7 @@ class CF_Connection
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return $containers;
     }
@@ -859,12 +859,12 @@ class CF_Container
         $bytes=0, $docdn=True)
     {
         if (strlen($name) > MAX_CONTAINER_NAME_LEN) {
-            throw new SyntaxException("Container name exceeds "
-                . "maximum allowed length.");
+            throw new SyntaxException("Container nome excede "
+                . "comprimento máximo permitido.");
         }
         if (strpos($name, "/") !== False) {
             throw new SyntaxException(
-                "Container names cannot contain a '/' character.");
+                "Os nomes de container não podem conter um caractere '/'.");
         }
         $this->cfs_auth = $cfs_auth;
         $this->cfs_http = $cfs_http;
@@ -943,7 +943,7 @@ class CF_Container
     {
         if ($this->cfs_http->getCDNMUrl() == NULL) {
             throw new CDNNotEnabledException(
-                "Authentication response did not indicate CDN availability");
+                "A resposta de autenticação não indicou a disponibilidade de CDN");
         }
         if ($this->cdn_uri != NULL) {
             # previously published, assume we're setting new attributes
@@ -972,7 +972,7 @@ class CF_Container
         #}
         if (!in_array($status, array(201,202))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_enabled = True;
         $this->cdn_ttl = $ttl;
@@ -1006,7 +1006,7 @@ class CF_Container
     function acl_user_agent($cdn_acl_user_agent="") {
         if ($this->cfs_http->getCDNMUrl() == NULL) {
             throw new CDNNotEnabledException(
-                "Authentication response did not indicate CDN availability");
+                "A resposta de autenticação não indicou a disponibilidade de CDN");
         }
         list($status,$reason) =
             $this->cfs_http->update_cdn_container($this->name,
@@ -1017,7 +1017,7 @@ class CF_Container
                 );
         if (!in_array($status, array(202,404))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_acl_user_agent = $cdn_acl_user_agent;
         return True;
@@ -1046,7 +1046,7 @@ class CF_Container
     function acl_referrer($cdn_acl_referrer="") {
         if ($this->cfs_http->getCDNMUrl() == NULL) {
             throw new CDNNotEnabledException(
-                "Authentication response did not indicate CDN availability");
+                "A resposta de autenticação não indicou a disponibilidade de CDN");
         }
         list($status,$reason) =
             $this->cfs_http->update_cdn_container($this->name,
@@ -1057,7 +1057,7 @@ class CF_Container
                 );
         if (!in_array($status, array(202,404))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_acl_referrer = $cdn_acl_referrer;
         return True;
@@ -1092,7 +1092,7 @@ class CF_Container
     function log_retention($cdn_log_retention=False) {
         if ($this->cfs_http->getCDNMUrl() == NULL) {
             throw new CDNNotEnabledException(
-                "Authentication response did not indicate CDN availability");
+                "A resposta de autenticação não indicou a disponibilidade de CDN");
         }
         list($status,$reason) =
             $this->cfs_http->update_cdn_container($this->name,
@@ -1103,7 +1103,7 @@ class CF_Container
                 );
         if (!in_array($status, array(202,404))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_log_retention = $cdn_log_retention;
         return True;
@@ -1143,7 +1143,7 @@ class CF_Container
     {
         if ($this->cfs_http->getCDNMUrl() == NULL) {
             throw new CDNNotEnabledException(
-                "Authentication response did not indicate CDN availability");
+                "A resposta de autenticação não indicou a disponibilidade de CDN");
         }
         list($status,$reason) = $this->cfs_http->remove_cdn_container($this->name);
         #if ($status == 401 && $this->_re_auth()) {
@@ -1151,7 +1151,7 @@ class CF_Container
         #}
         if (!in_array($status, array(202,404))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_enabled = False;
         $this->cdn_ttl = NULL;
@@ -1299,7 +1299,7 @@ class CF_Container
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return $obj_list;
     }
@@ -1358,7 +1358,7 @@ class CF_Container
         #}
         if ($status < 200 || $status > 299) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $objects = array();
         foreach ($obj_array as $obj) {
@@ -1409,20 +1409,20 @@ class CF_Container
             $obj_name = $obj;
         }
         if (!$obj_name) {
-            throw new SyntaxException("Object name not set.");
+            throw new SyntaxException("Nome do objeto não definido.");
         }
         $status = $this->cfs_http->delete_object($this->name, $obj_name);
         #if ($status == 401 && $this->_re_auth()) {
         #    return $this->delete_object($obj);
         #}
         if ($status == 404) {
-            $m = "Specified object '".$this->name."/".$obj_name;
-            $m.= "' did not exist to delete.";
+            $m = "Objeto especificado '".$this->name."/".$obj_name;
+            $m.= "' não existia para excluir.";
             throw new NoSuchObjectException($m);
         }
         if ($status != 204) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         return True;
     }
@@ -1471,7 +1471,7 @@ class CF_Container
         #}
         if (!in_array($status, array(204,404))) {
             throw new InvalidResponseException(
-                "Invalid response (".$status."): ".$this->cfs_http->get_error());
+                "Resposta inválida (".$status."): ".$this->cfs_http->get_error());
         }
         $this->cdn_enabled = $cdn_enabled;
         $this->cdn_uri = $cdn_uri;
@@ -1525,13 +1525,13 @@ class CF_Object
     function __construct(&$container, $name, $force_exists=False, $dohead=True)
     {
         if ($name[0] == "/") {
-            $r = "Object name '".$name;
-            $r .= "' cannot contain begin with a '/' character.";
+            $r = "Nome do objeto '".$name;
+            $r .= "' não pode conter começar com um caractere '/'.";
             throw new SyntaxException($r);
         }
         if (strlen($name) > MAX_OBJECT_NAME_LEN) {
-            throw new SyntaxException("Object name exceeds "
-                . "maximum allowed length.");
+            throw new SyntaxException("Nome do objeto excede "
+                . "comprimento máximo permitido.");
         }
         $this->container = $container;
         $this->name = $name;
@@ -1543,7 +1543,7 @@ class CF_Object
         $this->metadata = array();
         if ($dohead) {
             if (!$this->_initialize() && $force_exists) {
-                throw new NoSuchObjectException("No such object '".$name."'");
+                throw new NoSuchObjectException("Nenhum objeto desse tipo '".$name."'");
             }
         }
     }
@@ -1621,7 +1621,7 @@ class CF_Object
         }
 
         if (!$this->content_type) {
-            throw new BadContentTypeException("Required Content-Type not set");
+            throw new BadContentTypeException("Conteúdo obrigatório não definido");
         }
         return True;
     }
@@ -1689,7 +1689,7 @@ class CF_Object
         #}
         if (($status < 200) || ($status > 299
                 && $status != 412 && $status != 304)) {
-            throw new InvalidResponseException("Invalid response (".$status."): "
+            throw new InvalidResponseException("Resposta inválida (".$status."): "
                 . $this->container->cfs_http->get_error());
         }
         return $data;
@@ -1746,7 +1746,7 @@ class CF_Object
         #}
         if (($status < 200) || ($status > 299
                 && $status != 412 && $status != 304)) {
-            throw new InvalidResponseException("Invalid response (".$status."): "
+            throw new InvalidResponseException("Resposta inválida (".$status."): "
                 .$reason);
         }
         return True;
@@ -1790,7 +1790,7 @@ class CF_Object
             #    return $this->sync_metadata();
             #}
             if ($status != 202) {
-                throw new InvalidResponseException("Invalid response ("
+                throw new InvalidResponseException("Resposta inválida ("
                     .$status."): ".$this->container->cfs_http->get_error());
             }
             return True;
@@ -1831,10 +1831,10 @@ class CF_Object
     function write($data=NULL, $bytes=0, $verify=True)
     {
         if (!$data) {
-            throw new SyntaxException("Missing data source.");
+            throw new SyntaxException("Fonte de dados ausente.");
         }
         if ($bytes > MAX_OBJECT_SIZE) {
-            throw new SyntaxException("Bytes exceeds maximum object size.");
+            throw new SyntaxException("Bytes excede o tamanho máximo do objeto.");
         }
         if ($verify) {
             if (!$this->_etag_override) {
@@ -1857,7 +1857,7 @@ class CF_Object
             $close_fh = True;
             $this->content_length = (float) strlen($data);
             if ($this->content_length > MAX_OBJECT_SIZE) {
-                throw new SyntaxException("Data exceeds maximum object size");
+                throw new SyntaxException("Os dados excedem o tamanho máximo do objeto");
             }
             $ct_data = substr($data, 0, 64);
         } else {
@@ -1876,16 +1876,16 @@ class CF_Object
         #}
         if ($status == 412) {
             if ($close_fh) { fclose($fp); }
-            throw new SyntaxException("Missing Content-Type header");
+            throw new SyntaxException("Falta o cabeçalho Content-Type");
         }
         if ($status == 422) {
             if ($close_fh) { fclose($fp); }
             throw new MisMatchedChecksumException(
-                "Supplied and computed checksums do not match.");
+                "As somas de verificação fornecidas e computadas não correspondem.");
         }
         if ($status != 201) {
             if ($close_fh) { fclose($fp); }
-            throw new InvalidResponseException("Invalid response (".$status."): "
+            throw new InvalidResponseException("Resposta inválida (".$status."): "
                 . $this->container->cfs_http->get_error());
         }
         if (!$verify) {
@@ -1928,14 +1928,14 @@ class CF_Object
     {
         $fp = @fopen($filename, "r");
         if (!$fp) {
-            throw new IOException("Could not open file for reading: ".$filename);
+            throw new IOException("Não foi possível abrir o arquivo para leitura: ".$filename);
         }
 
         clearstatcache();
         
         $size = (float) sprintf("%u", filesize($filename));
         if ($size > MAX_OBJECT_SIZE) {
-            throw new SyntaxException("File size exceeds maximum object size.");
+            throw new SyntaxException("O tamanho do arquivo excede o tamanho máximo do objeto.");
         }
 
         $this->_guess_content_type($filename);
@@ -1973,7 +1973,7 @@ class CF_Object
     {
         $fp = @fopen($filename, "wb");
         if (!$fp) {
-            throw new IOException("Could not open file for writing: ".$filename);
+            throw new IOException("Não foi possível abrir o arquivo para escrita: ".$filename);
         }
         $result = $this->stream($fp);
         fclose($fp);
@@ -2055,7 +2055,7 @@ class CF_Object
             return False;
         }
         if ($status < 200 || $status > 299) {
-            throw new InvalidResponseException("Invalid response (".$status."): "
+            throw new InvalidResponseException("Resposta inválida (".$status."): "
                 . $this->container->cfs_http->get_error());
         }
         $this->etag = $etag;

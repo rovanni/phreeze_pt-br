@@ -148,7 +148,7 @@ class Mailer
 
 		if (!$this->IsValid($mailer->From))
 		{
-			$this->_errors[] = "Sender '".$mailer->From."' is not a valid email address.";
+			$this->_errors[] = "Remetente '".$mailer->From."' não é um endereço de e-mail válido.";
 			return MAILER_RESULT_FAIL;
 		}
 
@@ -159,7 +159,7 @@ class Mailer
 
 			if (!$this->IsValid($recipient->Email))
 			{
-				$this->_errors[] = "Recipient '".$recipient->Email."' is not a valid email address.";
+				$this->_errors[] = "Destinatário '".$recipient->Email."' não é um endereço de e-mail válido.";
 				return MAILER_RESULT_FAIL;
 			}
 
@@ -173,7 +173,7 @@ class Mailer
 
 			if (!$this->IsValid($recipient->Email))
 			{
-				$this->_errors[] = "CC Recipient '".$recipient->Email."' is not a valid email address.";
+				$this->_errors[] = "CC Destinatário '".$recipient->Email."' não é um endereço de e-mail válido.";
 				return MAILER_RESULT_FAIL;
 			}
 
@@ -186,7 +186,7 @@ class Mailer
 
 			if (!$this->IsValid($recipient->Email))
 			{
-				$this->_errors[] = "BCC Recipient '".$recipient->Email."' is not a valid email address.";
+				$this->_errors[] = "BCC Destinatário '".$recipient->Email."' não é um endereço de e-mail válido.";
 				return MAILER_RESULT_FAIL;
 			}
 

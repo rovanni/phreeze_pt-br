@@ -8,7 +8,7 @@ class TemplateFile
 	public function __construct($row = "")
 	{
 		$cols = explode("\t",trim($row));
-		if (count($cols) != 3) throw new Exception("Invalid row Paramter: " . $row);
+		if (count($cols) != 3) throw new Exception("Parâmetro linha inválida: " . $row);
 
 		$this->source = $cols[0];
 		$this->destination = $cols[1];

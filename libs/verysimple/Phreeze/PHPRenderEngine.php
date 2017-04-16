@@ -66,7 +66,7 @@ class PHPRenderEngine implements IRenderEngine
 
 			if (!is_readable($path))
 			{
-				throw new Exception("The template file '" . htmlspecialchars($path) . "' was not found.");
+				throw new Exception("O arquivo de modelo '" . htmlspecialchars($path) . "' não foi encontrado.");
 			}
 
 			// make this available at the scope of the included file

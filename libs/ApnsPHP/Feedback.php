@@ -70,11 +70,11 @@ class ApnsPHP_Feedback extends ApnsPHP_Abstract
 		$this->_aFeedback = array();
 		$sBuffer = '';
 		while (!feof($this->_hSocket)) {
-			$this->_log('INFO: Reading...');
+			$this->_log('INFO: Leitura...');
 			$sBuffer .= $sCurrBuffer = fread($this->_hSocket, 8192);
 			$nCurrBufferLen = strlen($sCurrBuffer);
 			if ($nCurrBufferLen > 0) {
-				$this->_log("INFO: {$nCurrBufferLen} bytes read.");
+				$this->_log("INFO: {$nCurrBufferLen} bytes lidos.");
 			}
 			unset($sCurrBuffer, $nCurrBufferLen);
 
@@ -85,7 +85,7 @@ class ApnsPHP_Feedback extends ApnsPHP_Abstract
 					$sFeedbackTuple = substr($sBuffer, 0, $nFeedbackTupleLen);
 					$sBuffer = substr($sBuffer, $nFeedbackTupleLen);
 					$this->_aFeedback[] = $aFeedback = $this->_parseBinaryTuple($sFeedbackTuple);
-					$this->_log(sprintf("INFO: New feedback tuple: timestamp=%d (%s), tokenLength=%d, deviceToken=%s.",
+					$this->_log(sprintf("INFO: Nova tupla de feedback: timestamp=%d (%s), tokenLength=%d, deviceToken=%s.",
 						$aFeedback['timestamp'], date('Y-m-d H:i:s', $aFeedback['timestamp']),
 						$aFeedback['tokenLength'], $aFeedback['deviceToken']
 					));
@@ -97,7 +97,7 @@ class ApnsPHP_Feedback extends ApnsPHP_Abstract
 			$null = NULL;
 			$nChangedStreams = stream_select($read, $null, $null, 0, $this->_nSocketSelectTimeout);
 			if ($nChangedStreams === false) {
-				$this->_log('WARNING: Unable to wait for a stream availability.');
+				$this->_log('AVISO: Não é possível aguardar uma disponibilidade de fluxo.');
 				break;
 			}
 		}

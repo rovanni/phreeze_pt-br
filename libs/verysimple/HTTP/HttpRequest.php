@@ -132,7 +132,7 @@ class HttpRequest
 		}
 		else
 		{
-			throw new Exception('PUT request is not supported on systems without curl installed');
+			throw new Exception('O pedido PUT não é suportado em sistemas sem curl instalado');
 		}
 	}
 

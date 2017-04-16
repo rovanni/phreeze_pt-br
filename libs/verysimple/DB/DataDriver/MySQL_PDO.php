@@ -43,7 +43,7 @@ class DataDriverMySQL_PDO implements IDataDriver
 	 */
 	function Open($connectionstring,$database,$username,$password,$charset='',$bootstrap='') 
 	{
-		if (!class_exists("PDO")) throw new DatabaseException('PDO extension is not enabled on this server.',DatabaseException::$CONNECTION_ERROR);
+		if (!class_exists("PDO")) throw new DatabaseException('A extensão PDO não está ativada neste servidor.',DatabaseException::$CONNECTION_ERROR);
 		
 		$connection = null;
 		
@@ -68,7 +68,7 @@ class DataDriverMySQL_PDO implements IDataDriver
 		} 
 		catch (Exception $e) 
 		{
-			throw new DatabaseException("Error connecting to database: " . $e->getMessage(),DatabaseException::$CONNECTION_ERROR);
+			throw new DatabaseException("Erro ao conectar-se ao banco de dados: " . $e->getMessage(),DatabaseException::$CONNECTION_ERROR);
 		}
 		
 		if ($bootstrap) 
@@ -82,7 +82,7 @@ class DataDriverMySQL_PDO implements IDataDriver
 				}
 				catch (Exception $ex)
 				{
-					throw new DatabaseException("Connection Bootstrap Error: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
+					throw new DatabaseException("Connection Bootstrap Erro: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
 				}
 			}
 		}

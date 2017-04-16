@@ -36,12 +36,12 @@ class {$singular} extends {$singular}DAO
 	 */
 	public function OnSave($insert)
 	{
-		// the controller create/update methods validate before saving.  this will be a
-		// redundant validation check, however it will ensure data integrity at the model
-		// level based on validation rules.  comment this line out if this is not desired
+		// Os métodos de criação/atualização do controlador validados antes de salvar. Esta será uma
+		// Verificação de validação redundante, no entanto, irá garantir a integridade dos dados no modelo
+		// Baseado em regras de validação. Comentar esta linha se isso não for desejado
 		if (!$this->Validate()) throw new Exception('Unable to Save {$singular}: ' .  implode(', ', $this->GetValidationErrors()));
 
-		// OnSave must return true or Phreeze will cancel the save operation
+		// OnSave deve retornar true ou Phreeze cancelará a operação de salvar
 		return true;
 	}
 

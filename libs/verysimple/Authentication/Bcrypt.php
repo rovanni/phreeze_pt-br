@@ -26,7 +26,7 @@ class Bcrypt
 	 */
 	public function __construct($rounds = 12) {
 		if(CRYPT_BLOWFISH != 1) {
-			throw new Exception("bcrypt not supported in this installation. See http://php.net/crypt");
+			throw new Exception("Bcrypt não suportado nesta instalação. Veja http://php.net/crypt");
 		}
 
 		$this->rounds = $rounds;

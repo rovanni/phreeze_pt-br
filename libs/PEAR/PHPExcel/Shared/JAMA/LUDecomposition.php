@@ -20,8 +20,8 @@
  */
 class PHPExcel_Shared_JAMA_LUDecomposition {
 
-	const MatrixSingularException	= "Can only perform operation on singular matrix.";
-	const MatrixSquareException		= "Mismatched Row dimension";
+	const MatrixSingularException	= "Só pode executar a operação em matriz singular.";
+	const MatrixSquareException		= "Dimensão da linha não correspondida";
 
 	/**
 	 *	Decomposition storage

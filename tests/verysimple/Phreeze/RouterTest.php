@@ -91,7 +91,7 @@ class tests_RouterTest extends BaseTestClass
 			$exceptionWasThrown = true;
 		}
 
-		$this->assertTrue($exceptionWasThrown,'Expected router to throw an exception for an unknown route');
+		$this->assertTrue($exceptionWasThrown,'Router esperado para lançar uma exceção para uma rota desconhecida');
 
 	}
 

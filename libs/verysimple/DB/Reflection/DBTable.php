@@ -101,7 +101,7 @@ class DBTable
 			if ($count == $index) return ($remove_prefix) ? $column->NameWithoutPrefix : $column->Name;
 		}
 		
-		throw new Exception('Index out of bounds');
+		throw new Exception('Índice fora dos limites');
 	}
 
 	/**
@@ -261,7 +261,7 @@ class DBTable
 			}
 			else
 			{
-				throw new Exception("Unknown Table Type");
+				throw new Exception("Tipo de tabela desconhecida");
 			}
 		}
 

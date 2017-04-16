@@ -37,11 +37,11 @@ class DataDriverSQLite implements IDataDriver
 	 */
 	function Open($connectionstring,$database,$username,$password,$charset='',$bootstrap='') 
 	{
-		if (!class_exists("SQLite3")) throw new DatabaseException('SQLite3 extension is not enabled on this server.',DatabaseException::$CONNECTION_ERROR);
+		if (!class_exists("SQLite3")) throw new DatabaseException('A extensão SQLite3 não está ativada neste servidor.',DatabaseException::$CONNECTION_ERROR);
 		
 		if ( !$connection =  new SQLite3($connectionstring, SQLITE3_OPEN_READWRITE,$password) )
 		{
-			throw new DatabaseException("Error connecting to database: Unable to open the database file.",DatabaseException::$CONNECTION_ERROR);
+			throw new DatabaseException("Erro ao conectar-se ao banco de dados: Não é possível abrir o arquivo de banco de dados.",DatabaseException::$CONNECTION_ERROR);
 		}
 		
 		// charset is ignored with sqlite
@@ -57,7 +57,7 @@ class DataDriverSQLite implements IDataDriver
 				}
 				catch (Exception $ex)
 				{
-					throw new DatabaseException("problem with bootstrap sql: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
+					throw new DatabaseException("problema com bootstrap sql: " . $ex->getMessage(),DatabaseException::$ERROR_IN_QUERY);
 				}
 			}
 		}
@@ -153,7 +153,7 @@ class DataDriverSQLite implements IDataDriver
 	 */
  	function GetTableNames($connection, $dbname, $ommitEmptyTables = false) 
 	{
-		if ($ommitEmptyTables) throw new DatabaseException("SQLite DataDriver doesn't support returning only non-empty tables.  Set ommitEmptyTables arg to false to use this method.");
+		if ($ommitEmptyTables) throw new DatabaseException("O SQLite DataDriver não oferece suporte ao retornar somente tabelas não vazias. Defina ommitEmptyTables arg como false para usar esse método.");
 		
 		$rs = $this->Query($connection,"SELECT name FROM sqlite_master WHERE type='table' and name != 'sqlite_sequence' ORDER BY name");
 
@@ -173,7 +173,7 @@ class DataDriverSQLite implements IDataDriver
 	 */
  	function Optimize($connection,$table) 
 	{
-		if ($table) throw new DatabaseException("SQLite optimization is database-wide.  Call Optimize() with a blank/null table arg to use this method.");
+		if ($table) throw new DatabaseException("A otimização do SQLite é ampla de banco de dados. Chamar Optimize() com um arg de tabela em branco/nulo para usar esse método.");
 		$this->Execute($connection,"VACUUM");
 	}
 	
@@ -182,7 +182,7 @@ class DataDriverSQLite implements IDataDriver
 	 */
 	function StartTransaction($connection)
 	{
-		throw new Exception('Transaction support is not implemented for this DataDriver');
+		throw new Exception('O suporte a transações não é implementado para este DataDriver');
 	}
 	
 	/**
@@ -190,7 +190,7 @@ class DataDriverSQLite implements IDataDriver
 	 */
 	function CommitTransaction($connection)
 	{
-		throw new Exception('Transaction support is not implemented for this DataDriver');
+		throw new Exception('O suporte a transações não é implementado para este DataDriver');
 	}
 	
 	/**
@@ -198,7 +198,7 @@ class DataDriverSQLite implements IDataDriver
 	 */
 	function RollbackTransaction($connection)
 	{
-		throw new Exception('Transaction support is not implemented for this DataDriver');
+		throw new Exception('O suporte a transações não é implementado para este DataDriver');
 	}
 }
 

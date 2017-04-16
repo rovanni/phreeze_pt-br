@@ -42,9 +42,9 @@ class tests_RouterTests extends BaseTestClass
 		
 		$route = $router->GetRoute('GET:home');
 		
-		$this->assertEquals(2, count($route),'Router returned an unexpected value');
-		$this->assertEquals('Default', $route[0],'Router returned an unexpected controller name');
-		$this->assertEquals('Home', $route[1],'Router returned an unexpected method name');
+		$this->assertEquals(2, count($route),'O roteador retornou um valor inesperado');
+		$this->assertEquals('Default', $route[0],'O router retornou um nome de controlador inesperado');
+		$this->assertEquals('Home', $route[1],'O roteador retornou um nome de método inesperado');
 	}
 	
 	/**
@@ -76,7 +76,7 @@ class tests_RouterTests extends BaseTestClass
 			$exceptionWasThrown = true;
 		}
 	
-		$this->assertTrue($exceptionWasThrown,'Expected router to throw an exception for an unknown route');
+		$this->assertTrue($exceptionWasThrown,'Router esperado para lançar uma exceção para uma rota desconhecida');
 	}
 	
 }

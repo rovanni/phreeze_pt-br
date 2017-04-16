@@ -171,7 +171,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Invalid style array passed.");
+			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
 		}
 		return $this;
 	}

@@ -19,7 +19,7 @@
 			
 			if ($('#appname').val() == '')
 			{
-				error += delim + 'Application Name is required';
+				error += delim + 'O nome do aplicativo é obrigatório';
 				delim = '<br/>';
 			}
 			
@@ -32,12 +32,12 @@
 				
 				if (singularVal == '' || pluralVal == '')
 				{
-					error += delim + 'Singular and Plural Name are required for table \'' + tableName + '\'';
+					error += delim + 'Nome Singular e Plural são necessários para a tabela \'' + tableName + '\'';
 					delim = '<br/>';
 				}
 				else if (singularVal == pluralVal)
 				{
-					error += delim + 'Singular and Plural Name cannot be the same for table \'' + tableName + '\'';
+					error += delim + 'O nome Singular e Plural não pode ser o mesmo para a tabela \'' + tableName + '\'';
 					delim = '<br/>';
 				}
 				

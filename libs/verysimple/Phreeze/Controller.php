@@ -158,7 +158,7 @@ abstract class Controller
 	 * @param string username querystring field (optional) if provided, the username can be passed via querystring instead of through the auth headers
 	 * @param string password querystring field (optional) if provided, the password can be passed via querystring instead of through the auth headers
 	 */
-	protected function Require401Authentication(IAuthenticatable $authenticatable, $realm = "Login Required", $qs_username_field = "", $qs_password_field = "")
+	protected function Require401Authentication(IAuthenticatable $authenticatable, $realm = "Login obrigatório", $qs_username_field = "", $qs_password_field = "")
 	{
 		require_once("verysimple/Authentication/Auth401.php");
 		
@@ -170,7 +170,7 @@ abstract class Controller
 			if( $this->Get401AuthUsername($qs_username_field) )
 			{
 				// a username was provided, which means login failed
-				Auth401::OutputHeaders("Invalid Login");
+				Auth401::OutputHeaders("Login inválido");
 			}
 			else
 			{
@@ -370,7 +370,7 @@ abstract class Controller
 	{
 		if (!$this->ModelName)
 		{
-			throw new Exception("ModelName must be defined in " . get_class($this) . "::ListAll");
+			throw new Exception("ModelName deve ser definido em " . get_class($this) . "::ListAll");
 		}
 
 		// capture output instead of rendering if specified
@@ -397,7 +397,7 @@ abstract class Controller
 	{
 		if (!$this->ModelName)
 		{
-			throw new Exception("ModelName must be defined in " . get_class($this) . "::_ListAll.");
+			throw new Exception("ModelName deve ser definido em " . get_class($this) . "::_ListAll.");
 		}
 
 		$page = $this->Phreezer->Query($this->ModelName,$criteria)->GetDataPage($current_page,$limit);
@@ -453,7 +453,7 @@ abstract class Controller
 			}
 			catch (exception $ex)
 			{
-				throw new Exception("The objects contained in this DataPage do not have a FieldMap.  Set noMap argument to true to supress this error: " . $ex->getMessage());
+				throw new Exception("Os objetos contidos neste DataPage não têm um FieldMap. Defina argumento noMap como true para suprimir este erro: " . $ex->getMessage());
 			}
 		}
 
@@ -606,8 +606,8 @@ abstract class Controller
 		if (!is_object($obj))
 		{
 			$vr->Success = false;
-			$vr->Errors = array("Unknown"=>"LoadFromForm does not appear to be implemented.  Unable to validate");
-			$vr->Message = "LoadFromForm does not appear to be implemented.  Unable to validate";
+			$vr->Errors = array("Desconhecido"=>"LoadFromForm não parece ser implementado. Não é possível validar");
+			$vr->Message = "LoadFromForm não parece ser implementado. Não é possível validar";
 		}
 		elseif ($obj->Validate())
 		{
@@ -617,7 +617,7 @@ abstract class Controller
 		{
 			$vr->Success = false;
 			$vr->Errors = $obj->GetValidationErrors();
-			$vr->Message = "Validation Errors Occured";
+			$vr->Message = "Erros de Validação Ocorridos";
 		}
 
 		// if the user requested to save inline, their Save method will take over from here
@@ -639,14 +639,14 @@ abstract class Controller
 	{
 		if ( !RequestUtil::Get("SaveInline") )
 		{
-			throw new Exception("Save is not implemented by this controller");
+			throw new Exception("Salvar não é implementado por este controlador");
 		}
 
 		require_once("ValidationResponse.php");
 		$vr = new ValidationResponse();
 		$vr->Success = false;
 		$vr->Errors = array();
-		$vr->Message = "SaveInline is not implemented by this controller";
+		$vr->Message = "SaveInline não é implementado por este controlador";
 		$this->RenderJSON($vr);
 	}
 
@@ -659,7 +659,7 @@ abstract class Controller
 	{
 		if (!$this->ModelName)
 		{
-			throw new Exception("ModelName must be defined in " . get_class($this) . "::GetColumns");
+			throw new Exception("ModelName deve ser definido em " . get_class($this) . "::GetColumns");
 		}
 
 		$counter = 0;
@@ -736,7 +736,7 @@ abstract class Controller
 					$name = trim($parts2[0]);
 
 					Authenticator::ClearAuthentication($this->GUID);
-					throw new Exception("The class definition used for authentication '$name' must be defined (included) before the session is started, for example in _app_config.php.");
+					throw new Exception("A definição de classe usada para autenticação '$name' Deve ser definido (incluído) antes da sessão ser iniciada, por exemplo, em _app_config.php.");
 				}
 				else
 				{
@@ -777,9 +777,9 @@ abstract class Controller
 	 * @param string $permission_denied_feedback (optional) Feedback to forward to the on_fail_action if user is logged in but does not have permission
 	 * @throws AuthenticationException
 	 */
-	protected function RequirePermission($permission, $on_fail_action = "", $not_authenticated_feedback = "Please login to access this page", $permission_denied_feedback = "You are not authorized to view this page and/or your session has expired")
+	protected function RequirePermission($permission, $on_fail_action = "", $not_authenticated_feedback = "Faça o login para acessar esta página", $permission_denied_feedback = "Você não está autorizado a visualizar esta página e/ou sua sessão expirou")
 	{
-		$this->Phreezer->Observe("Checking For Permission '$permission'");
+		$this->Phreezer->Observe("Verificando a permissão '$permission'");
 		$cu = $this->GetCurrentUser();
 
 		if (!$cu || !$cu->IsAuthorized($permission))
@@ -881,7 +881,7 @@ abstract class Controller
 			}
 			else
 			{
-				throw new Exception('RenderJSON could not determine the type of object to render');
+				throw new Exception('RenderJSON não pôde determinar o tipo de objeto a ser processado');
 			}
 		}
 		else
@@ -907,7 +907,7 @@ abstract class Controller
 				}
 				else
 				{
-					throw new Exception('The object to be encoded contains invalid UTF-8 data.  Please verify your database character encoding or alternatively set the Controller::RenderJSON $forceUTF8 parameter to 1 or 2.');
+					throw new Exception('O objeto a ser codificado contém dados UTF-8 inválidos. Verifique a codificação de caracteres do banco de dados ou, em alternativa, defina o parâmetro Controller::RenderJSON $forceUTF8 como 1 ou 2.');
 				}
 			}
 			else
@@ -1047,7 +1047,7 @@ abstract class Controller
 	*/
 	function __call($name,$vars = null)
 	{
-		throw new Exception(get_class($this) . "::" . $name . " is not implemented");
+		throw new Exception(get_class($this) . "::" . $name . " não é implementado");
 	}
 }
 

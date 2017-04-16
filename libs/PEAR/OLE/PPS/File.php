@@ -88,7 +88,7 @@ class OLE_PPS_File extends OLE_PPS
         $this->_tmp_filename = tempnam($this->_tmp_dir, "OLE_PPS_File");
         $fh = @fopen($this->_tmp_filename, "w+b");
         if ($fh == false) {
-            return $this->raiseError("Can't create temporary file");
+            return $this->raiseError("Não é possível criar um arquivo temporário");
         }
         $this->_PPS_FILE = $fh;
         if ($this->_PPS_FILE) {

@@ -102,7 +102,7 @@ Test.prototype = {
 		try {
 			this.testEnvironment.setup.call( this.testEnvironment );
 		} catch( e ) {
-			QUnit.pushFailure( "Setup failed on " + this.testName + ": " + e.message, extractStacktrace( e, 1 ) );
+			QUnit.pushFailure( "O programa de configuração falhou no " + this.testName + ": " + e.message, extractStacktrace( e, 1 ) );
 		}
 	},
 	run: function() {
@@ -126,7 +126,7 @@ Test.prototype = {
 		try {
 			this.callback.call( this.testEnvironment );
 		} catch( e ) {
-			QUnit.pushFailure( "Died on test #" + (this.assertions.length + 1) + ": " + e.message, extractStacktrace( e, 1 ) );
+			QUnit.pushFailure( "Morreu no teste #" + (this.assertions.length + 1) + ": " + e.message, extractStacktrace( e, 1 ) );
 			// else next test will carry the responsibility
 			saveGlobal();
 
@@ -145,7 +145,7 @@ Test.prototype = {
 			try {
 				this.testEnvironment.teardown.call( this.testEnvironment );
 			} catch( e ) {
-				QUnit.pushFailure( "Teardown failed on " + this.testName + ": " + e.message, extractStacktrace( e, 1 ) );
+				QUnit.pushFailure( "Teardown falhou em " + this.testName + ": " + e.message, extractStacktrace( e, 1 ) );
 			}
 		}
 		checkPollution();
@@ -153,9 +153,9 @@ Test.prototype = {
 	finish: function() {
 		config.current = this;
 		if ( this.expected != null && this.expected != this.assertions.length ) {
-			QUnit.pushFailure( "Expected " + this.expected + " assertions, but " + this.assertions.length + " were run" );
+			QUnit.pushFailure( "Esperado " + this.expected + " afirmações, mas " + this.assertions.length + " foram executados" );
 		} else if ( this.expected == null && !this.assertions.length ) {
-			QUnit.pushFailure( "Expected at least one assertion, but none were run - call expect(0) to accept zero assertions." );
+			QUnit.pushFailure( "Esperado pelo menos uma asserção, mas nenhum foi executado - call expect (0) para aceitar asserções zero." );
 		}
 
 		var assertion, a, b, i, li, ol,
@@ -174,7 +174,7 @@ Test.prototype = {
 
 				li = document.createElement( "li" );
 				li.className = assertion.result ? "pass" : "fail";
-				li.innerHTML = assertion.message || ( assertion.result ? "okay" : "failed" );
+				li.innerHTML = assertion.message || ( assertion.result ? "OK" : "falhou" );
 				ol.appendChild( li );
 
 				if ( assertion.result ) {
@@ -341,7 +341,7 @@ QUnit = {
 	// @example ok( "asdfasdf".length > 5, "There must be at least 5 chars" );
 	ok: function( result, msg ) {
 		if ( !config.current ) {
-			throw new Error( "ok() assertion outside test context, was " + sourceFromStacktrace(2) );
+			throw new Error( "Ok () asserção fora do contexto do teste, foi " + sourceFromStacktrace(2) );
 		}
 		result = !!result;
 
@@ -484,10 +484,10 @@ QUnit = {
 // deprecated; still export them to window to provide clear error messages
 // next step: remove entirely
 QUnit.equals = function() {
-	QUnit.push( false, false, false, "QUnit.equals has been deprecated since 2009 (e88049a0), use QUnit.equal instead" );
+	QUnit.push( false, false, false, "QUnit.equals foi obsoleto desde 2009 (e88049a0), use QUnit.equal em vez disso" );
 };
 QUnit.same = function() {
-	QUnit.push( false, false, false, "QUnit.same has been deprecated since 2009 (e88049a0), use QUnit.deepEqual instead" );
+	QUnit.push( false, false, false, "QUnit.same foi obsoleto desde 2009 (e88049a0), use QUnit.deepEqual em vez disso" );
 };
 
 // Maintain internal state
@@ -678,7 +678,7 @@ extend( QUnit, {
 
 	push: function( result, actual, expected, message ) {
 		if ( !config.current ) {
-			throw new Error( "assertion outside test context, was " + sourceFromStacktrace() );
+			throw new Error( "Asserção fora do contexto do teste, " + sourceFromStacktrace() );
 		}
 
 		var output, source,
@@ -765,9 +765,9 @@ extend( QUnit, {
 	addEvent: addEvent
 });
 
-// QUnit.constructor is set to the empty F() above so that we can add to it's prototype later
-// Doing this allows us to tell if the following methods have been overwritten on the actual
-// QUnit object, which is a deprecated way of using the callbacks.
+// QUnit.constructor é definido para o vazio F () acima para que possamos adicionar ao seu protótipo mais tarde
+// Fazendo isto permite-nos dizer se os seguintes métodos foram substituídos no real
+// QUnit objeto, que é um modo depreciado de usar os callbacks.
 extend( QUnit.constructor.prototype, {
 	// Logging callbacks; all receive a single argument with the listed properties
 	// run test/logs.html for any related changes
@@ -1090,12 +1090,12 @@ function checkPollution( name ) {
 
 	newGlobals = diff( config.pollution, old );
 	if ( newGlobals.length > 0 ) {
-		QUnit.pushFailure( "Introduced global variable(s): " + newGlobals.join(", ") );
+		QUnit.pushFailure( "Variável (s) global (is) introduzida (s): " + newGlobals.join(", ") );
 	}
 
 	deletedGlobals = diff( old, config.pollution );
 	if ( deletedGlobals.length > 0 ) {
-		QUnit.pushFailure( "Deleted global variable(s): " + deletedGlobals.join(", ") );
+		QUnit.pushFailure( "Variáveis globais excluídas: " + deletedGlobals.join(", ") );
 	}
 }
 

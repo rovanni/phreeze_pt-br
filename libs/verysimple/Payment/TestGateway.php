@@ -40,15 +40,15 @@ class TestGateway extends PaymentProcessor
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "0";
-			$resp->ResponseMessage = "TestGateway: No Transaction ID provided";
-			$resp->RawResponse = "Submit any value in the TransactionId field for a successful response";
+			$resp->ResponseMessage = "TestGateway: Nenhum ID de transação fornecido";
+			$resp->RawResponse = "Envie qualquer valor no campo TransactionId para uma resposta bem-sucedida";
 		}
 		else
 		{
 			$resp->IsSuccess = true;
 			$resp->TransactionId = rand( 1000000 , 9999999 );
 			$resp->ResponseCode = "OK";
-			$resp->ResponseMessage = "TestGateway: Full amount sucessfully refunded";
+			$resp->ResponseMessage = "TestGateway: Valor total devolvido com êxito";
 		}
 
 		return $resp;
@@ -75,29 +75,29 @@ class TestGateway extends PaymentProcessor
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "0";
-			$resp->ResponseMessage = "TestGateway: No Credit Card Number Provided";
-			$resp->RawResponse = "Submit card # 4111111111111111 for a successful transaction response";
+			$resp->ResponseMessage = "TestGateway: Nenhum número de cartão de crédito fornecido";
+			$resp->RawResponse = "Envie o cartão # 4111111111111111 para uma resposta bem sucedida da transação";
 		}
 		elseif ($req->CCNumber != '4111111111111111')
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "1";
-			$resp->ResponseMessage = "TestGateway: The credit card number '".$req->CCNumber."' is invalid";
-			$resp->RawResponse = "Submit card # 4111111111111111 for a successful transaction response";
+			$resp->ResponseMessage = "TestGateway: O número do cartão de crédito '".$req->CCNumber."' é inválido";
+			$resp->RawResponse = "Envie o cartão # 4111111111111111 para uma resposta bem sucedida da transação";
 		}
 		elseif ($expdate < time())
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "2";
-			$resp->ResponseMessage = "TestGateway: The credit card is expired";
-			$resp->RawResponse = "Set the expire date greater than today for a successful transaction response";
+			$resp->ResponseMessage = "TestGateway: O cartão de crédito expirou";
+			$resp->RawResponse = "Definir a data de expiração maior do que hoje para uma resposta de transação bem-sucedida";
 		}
 		else
 		{
 			$resp->IsSuccess = true;
 			$resp->TransactionId = rand( 1000000 , 9999999 );
 			$resp->ResponseCode = "OK";
-			$resp->ResponseMessage = "TestGateway: Charge of " . number_format($req->TransactionAmount,2) . " Posted";
+			$resp->ResponseMessage = "TestGateway: cobrança de " . number_format($req->TransactionAmount,2) . " Postado";
 		}
 
 		return $resp;

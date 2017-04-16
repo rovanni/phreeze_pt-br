@@ -87,7 +87,7 @@ class Cookie {
 		// attempting to send a secure cookie over the insecure HTTP.
 		if ($secure and ! Request::secure())
 		{
-			throw new \Exception("Attempting to set secure cookie over HTTP.");
+			throw new \Exception("Tentando definir cookie seguro por HTTP.");
 		}
 
 		static::$jar[$name] = compact('name', 'value', 'expiration', 'path', 'domain', 'secure');

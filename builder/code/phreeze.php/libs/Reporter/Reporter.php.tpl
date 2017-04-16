@@ -43,8 +43,8 @@ class {$singular}Reporter extends Reporter
 {/foreach}
 		from `{$table->Name}`";
 
-		// the criteria can be used or you can write your own custom logic.
-		// be sure to escape any user input with $criteria->Escape()
+		// os critérios podem ser usados ou você pode escrever sua própria lógica personalizada.
+		// certifique-se de escapar qualquer entrada do usuário com $criteria->Escape()
 		$sql .= $criteria->GetWhere();
 		$sql .= $criteria->GetOrder();
 
@@ -64,8 +64,8 @@ class {$singular}Reporter extends Reporter
 	{ldelim}
 		$sql = "select count(1) as counter from `{$table->Name}`";
 
-		// the criteria can be used or you can write your own custom logic.
-		// be sure to escape any user input with $criteria->Escape()
+		// os critérios podem ser usados ou você pode escrever sua própria lógica personalizada.
+		// certifique-se de escapar qualquer entrada do usuário com $criteria->Escape()
 		$sql .= $criteria->GetWhere();
 
 		return $sql;

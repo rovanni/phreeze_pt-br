@@ -85,7 +85,7 @@ class AuthAccount extends AccountDAO implements IAuthenticatable
 		// for backwards compatibility with Phreeze 2x, look in multiple places for the AccountCriteria class
 		if (!class_exists("AccountCriteria")) @include_once("Model/AccountCriteria.php");
 		if (!class_exists("AccountCriteria")) @include_once("Model/DAO/AccountCriteria.php");
-		if (!class_exists("AccountCriteria")) throw new Exception("Unable to locate AccountCriteria class.");
+		if (!class_exists("AccountCriteria")) throw new Exception("Não é possível localizar a classe AccountCriteria.");
 		
 		if ($username == "" || $password == "")
 		{

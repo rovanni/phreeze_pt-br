@@ -41,7 +41,7 @@ class VerySimpleXmlUtil
 
 		if (!$xml) {
 			$xml = $emptyVal;
-			if (!$xml) throw new Exception('Empty string could not be parsed as XML');
+			if (!$xml) throw new Exception('Cadeia de caracteres vazia não pôde ser analisada como XML');
 		}
 		
 		// re-route error handling temporarily so we can convert PHP errors to an exception
@@ -126,7 +126,7 @@ class VerySimpleXmlUtil
 		
 		if (!$xmlstring) {
 			$xmlstring = $emptyVal;
-			if (!$xmlstring) throw new Exception('Empty string could not be parsed as XML');
+			if (!$xmlstring) throw new Exception('Cadeia de caracteres vazia não pôde ser analisada como XML');
 		}
 		
 		$xml = VerySimpleXmlUtil::SafeParse($xmlstring);

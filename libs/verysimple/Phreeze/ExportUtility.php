@@ -170,7 +170,7 @@ class ExportUtility
 			$left = floor($columnNumber / 26);
 			$right = 1 + ($columnNumber % 26);
 
-			if ($left > 26) throw new Exception("Columns exceed supported amount");
+			if ($left > 26) throw new Exception("As colunas excedem o valor suportado");
 			
 			$code = chr($left + 64) . chr($right + 64);
 		}

@@ -18,15 +18,15 @@ if ( php_sapi_name() == 'cli' )
 	$version = Phreezer::$Version;
 	$path = 'phreeze-'.$version.'.phar'; 
 	
-	echo "Generating phreeze-".$version.".phar ...\n";
+	echo "Gerando phreeze-".$version.".phar ...\n";
 	
 	$archive = new Phar($path);
 	$archive->buildFromDirectory('../libs');
 	$archive->setStub(file_get_contents('stub.php'));
 	
-	echo "Finished.\n";
+	echo "Acabado.\n";
 }
 else
 {
-	echo 'build.php should be run from the command line';
+	echo 'Build.php deve ser executado a partir da linha de comando';
 }

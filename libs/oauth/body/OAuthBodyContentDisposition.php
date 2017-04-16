@@ -64,7 +64,7 @@ class OAuthBodyContentDisposition
 					$data = @file_get_contents($f['file']);
 					if ($data === false)
 					{
-						throw new OAuthException2(sprintf('Could not read the file "%s" for request body', $f['file']));
+						throw new OAuthException2(sprintf('Não foi possível ler o ficheiro "%s" para o corpo de solicitação', $f['file']));
 					}
 					if (empty($filename))
 					{
@@ -81,7 +81,7 @@ class OAuthBodyContentDisposition
 				{
 					if (isset($headers['Content-Disposition']))
 					{
-						throw new OAuthException2('Only a single file (or data) allowed in a signed PUT/POST request body.');
+						throw new OAuthException2('Apenas um único arquivo (ou dados) permitido em um assinado PUT/POST pedido corpo.');
 					}
 
 					if (empty($filename))

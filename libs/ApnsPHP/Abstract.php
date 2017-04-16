@@ -80,14 +80,14 @@ abstract class ApnsPHP_Abstract
 	{
 		if ($nEnvironment != self::ENVIRONMENT_PRODUCTION && $nEnvironment != self::ENVIRONMENT_SANDBOX) {
 			throw new ApnsPHP_Exception(
-				"Invalid environment '{$nEnvironment}'"
+				"Ambiente inválido '{$nEnvironment}'"
 			);
 		}
 		$this->_nEnvironment = $nEnvironment;
 
 		if (!is_readable($sProviderCertificateFile)) {
 			throw new ApnsPHP_Exception(
-				"Unable to read certificate file '{$sProviderCertificateFile}'"
+				"Não é possível ler o arquivo de certificado '{$sProviderCertificateFile}'"
 			);
 		}
 		$this->_sProviderCertificateFile = $sProviderCertificateFile;
@@ -119,13 +119,13 @@ abstract class ApnsPHP_Abstract
 	{
 		if (!is_object($logger)) {
 			throw new ApnsPHP_Exception(
-				"The logger should be an instance of 'ApnsPHP_Log_Interface'"
+				"O registrador deve ser um'ApnsPHP_Log_Interface'"
 			);
 		}
 		if (!($logger instanceof ApnsPHP_Log_Interface)) {
 			throw new ApnsPHP_Exception(
-				"Unable to use an instance of '" . get_class($logger) . "' as logger: " .
-				"a logger must implements ApnsPHP_Log_Interface."
+				"Não é possível usar uma instância de '" . get_class($logger) . "' como registrador: " .
+				"Um registrador deve implementar ApnsPHP_Log_Interface."
 			);
 		}
 		$this->_logger = $logger;
@@ -171,7 +171,7 @@ abstract class ApnsPHP_Abstract
 	{
 		if (!is_readable($sRootCertificationAuthorityFile)) {
 			throw new ApnsPHP_Exception(
-				"Unable to read Certificate Authority file '{$sRootCertificationAuthorityFile}'"
+				"Não é possível ler o arquivo de autoridade de certificação '{$sRootCertificationAuthorityFile}'"
 			);
 		}
 		$this->_sRootCertificationAuthorityFile = $sRootCertificationAuthorityFile;
@@ -338,7 +338,7 @@ abstract class ApnsPHP_Abstract
 					throw $e;
 				} else {
 					$this->_log(
-						"INFO: Retry to connect (" . ($nRetry+1) .
+						"INFO: Tentar novamente para ligar (" . ($nRetry+1) .
 						"/{$this->_nConnectRetryTimes})..."
 					);
 					usleep($this->_nConnectRetryInterval);
@@ -356,7 +356,7 @@ abstract class ApnsPHP_Abstract
 	public function disconnect()
 	{
 		if (is_resource($this->_hSocket)) {
-			$this->_log('INFO: Disconnected.');
+			$this->_log('INFO: Desconectado.');
 			return fclose($this->_hSocket);
 		}
 		return false;
@@ -373,7 +373,7 @@ abstract class ApnsPHP_Abstract
 		$sURL = $this->_aServiceURLs[$this->_nEnvironment];
 		unset($aURLs);
 
-		$this->_log("INFO: Trying {$sURL}...");
+		$this->_log("INFO: Tentando {$sURL}...");
 
 		/**
 		 * @see http://php.net/manual/en/context.ssl.php
@@ -401,7 +401,7 @@ abstract class ApnsPHP_Abstract
 		stream_set_blocking($this->_hSocket, 0);
 		stream_set_write_buffer($this->_hSocket, 0);
 
-		$this->_log("INFO: Connected to {$sURL}.");
+		$this->_log("INFO: Conectado a {$sURL}.");
 
 		return true;
 	}

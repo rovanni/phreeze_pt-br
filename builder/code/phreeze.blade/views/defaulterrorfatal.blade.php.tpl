@@ -15,13 +15,12 @@
 
 	<h3 onclick="$('#stacktrace').show('slow');" class="well" style="cursor: pointer;">{{htmlentities($message)}}</h3>
 
-	<p>You may want to try returning to the the previous page and verifying that
-	all fields have been filled out correctly.</p>
+	<p>Você pode querer tentar retornar à página anterior e verificar se todos os campos foram preenchidos corretamente.</p>
 
-	<p>If you continue to experience this error please contact support.</p>
+	<p>Se continuar a experimentar esse erro, entre em contato com o suporte.</p>
 
 	<div id="stacktrace" class="well hide">
-		<p style="font-weight: bold;">Stack Trace:</p>
+		<p style="font-weight: bold;">Rastreamento de pilha:</p>
 		@if (isset($stacktrace))
 			<p style="white-space: nowrap; overflow: auto; padding-bottom: 15px; font-family: courier new, courier; font-size: 8pt;">{{htmlentities($stacktrace)}}</p>
 		@endif

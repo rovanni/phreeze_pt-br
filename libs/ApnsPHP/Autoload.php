@@ -33,12 +33,12 @@
 function ApnsPHP_Autoload($sClassName)
 {
 	if (empty($sClassName)) {
-		throw new Exception('Class name is empty');
+		throw new Exception('O nome da classe está vazio');
 	}
 
 	$sPath = dirname(dirname(__FILE__));
 	if (empty($sPath)) {
-		throw new Exception('Current path is empty');
+		throw new Exception('O caminho atual está vazio');
 	}
 
 	$sFile = sprintf('%s%s%s.php',

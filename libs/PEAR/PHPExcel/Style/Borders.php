@@ -255,7 +255,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Invalid style array passed.");
+			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
 		}
 		return $this;
 	}
@@ -313,7 +313,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      */
     public function getAllBorders() {
 		if (!$this->_isSupervisor) {
-			throw new PHPExcel_Exception('Can only get pseudo-border for supervisor.');
+			throw new PHPExcel_Exception('Só pode obter pseudo-fronteira para supervisor.');
 		}
 		return $this->_allBorders;
     }
@@ -326,7 +326,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      */
     public function getOutline() {
 		if (!$this->_isSupervisor) {
-			throw new PHPExcel_Exception('Can only get pseudo-border for supervisor.');
+			throw new PHPExcel_Exception('Só pode obter pseudo-fronteira para supervisor.');
 		}
     	return $this->_outline;
     }
@@ -339,7 +339,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      */
     public function getInside() {
 		if (!$this->_isSupervisor) {
-			throw new PHPExcel_Exception('Can only get pseudo-border for supervisor.');
+			throw new PHPExcel_Exception('Só pode obter pseudo-fronteira para supervisor.');
 		}
     	return $this->_inside;
     }
@@ -352,7 +352,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      */
     public function getVertical() {
 		if (!$this->_isSupervisor) {
-			throw new PHPExcel_Exception('Can only get pseudo-border for supervisor.');
+			throw new PHPExcel_Exception('Só pode obter pseudo-fronteira para supervisor.');
 		}
 		return $this->_vertical;
     }
@@ -365,7 +365,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      */
     public function getHorizontal() {
 		if (!$this->_isSupervisor) {
-			throw new PHPExcel_Exception('Can only get pseudo-border for supervisor.');
+			throw new PHPExcel_Exception('Só pode obter pseudo-fronteira para supervisor.');
 		}
 		return $this->_horizontal;
     }

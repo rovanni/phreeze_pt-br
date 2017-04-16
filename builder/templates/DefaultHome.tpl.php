@@ -3,15 +3,15 @@
 <div class="hero-unit">
 	<h1><img src="images/banner.png" alt="Phreeze Builder" /></h1>
 	<div class="subheader">
-		<div>Enter your MySQL connection information in the form below.</div>
-		<div>Phreeze will analyze your schema and generate an awesome application.</div>
+		<div>Digite suas informações de conexão MySQL no formulário abaixo.</div>
+		<div>Phreeze irá analisar o seu esquema e gerar um aplicativo incrível.</div>
 	</div>
 </div>
 
 <form action="analyze" method="post" class="form-horizontal">
 	<fieldset class="well">
 		<div id="hostPortContainer" class="control-group">
-			<label class="control-label" for="host">MySQL Host : Port</label>
+			<label class="control-label" for="host">MySQL endereço:Porta</label>
 			<div class="controls inline-inputs">
 				<input type="text" class="span2" id="host" name="host"  placeholder="example: localhost" /> :
 				<input type="text" class="span1" id="port" name="port" value="3306" />
@@ -32,7 +32,7 @@
 		</div>
 		
 		<div id="schemaContainer" class="control-group">
-			<label class="control-label" for="schema">Schema Name</label>
+			<label class="control-label" for="schema">Nome do Esquema</label>
 			<div class="controls inline-inputs">
 				<input type="text" class="span3" id="schema" name="schema" placeholder="example: mydatabase" />
 				<span class="help-inline"></span>
@@ -40,7 +40,7 @@
 		</div>
 
 		<div id="usernameContainer" class="control-group">
-			<label class="control-label" for="username">MySQL Username</label>
+			<label class="control-label" for="username">MySQL nome de usuário</label>
 			<div class="controls inline-inputs">
 				<input type="text" class="span3" id="username" name="username" placeholder="" />
 				<span class="help-inline"></span>
@@ -48,7 +48,7 @@
 		</div>
 
 		<div id="passwordContainer" class="control-group">
-			<label class="control-label" for="password">MySQL Password</label>
+			<label class="control-label" for="password">MySQL senha</label>
 			<div class="controls inline-inputs">
 				<input type="password" class="span3" id="password" name="password" placeholder="" />
 				<span class="help-inline"></span>
@@ -57,7 +57,7 @@
 	</fieldset>
 
 	<p>
-		<input type="submit" class="btn btn-inverse" value="Analyze Database &raquo;" />
+		<input type="submit" class="btn btn-inverse" value="Analisar banco de dados &raquo;" />
 	</p>
 </form>
 

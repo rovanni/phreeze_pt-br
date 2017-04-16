@@ -38,9 +38,9 @@ catch (exception $ex)
 		echo "<style>* { font-family: verdana, arial, helvetica, sans-serif; }</style>\n";
 		echo "<h1>Fatal Error:</h1>\n";
 		echo '<h3>' . htmlentities($ex->getMessage()) . "</h3>\n";
-		echo "<h4>Original Stack Trace:</h4>\n";
+		echo "<h4>Rastreamento de pilha original:</h4>\n";
 		echo '<textarea wrap="off" style="height: 200px; width: 100%;">' . htmlentities($ex->getTraceAsString()) . '</textarea>';
-		echo "<h4>In addition to the above error, the default error template could not be displayed:</h4>\n";
+		echo "<h4>Além do erro acima, o modelo de erro padrão não pôde ser exibido:</h4>\n";
 		echo '<textarea wrap="off" style="height: 200px; width: 100%;">' . htmlentities($ex2->getMessage()) . "\n\n" . htmlentities($ex2->getTraceAsString()) . '</textarea>';
 	}
 

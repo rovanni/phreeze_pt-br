@@ -202,7 +202,7 @@ class GenericRouter implements IRouter
 				if( array_key_exists("params",$value) ) {
 					foreach( $value["params"] as $rKey => $rVal ) {
 						if (!array_key_exists($rKey, $params)) {
-							throw new Exception("Missing parameter '$rKey' for route $controller.$method");
+							throw new Exception("Parâmetro ausente '$rKey' para rota $controller.$method");
 						}
 						$keyArr[$value["params"][$rKey]] = $params[$rKey];
 					}

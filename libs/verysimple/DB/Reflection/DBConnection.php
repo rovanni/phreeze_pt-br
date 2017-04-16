@@ -65,7 +65,7 @@ class DBConnection
 			$this->handler = new DBEventHandler();
 		}
 
-		$this->handler->Log(DBH_LOG_INFO, "Connection Initialized");
+		$this->handler->Log(DBH_LOG_INFO, "Conexão inicializada");
 	}
 
     /**
@@ -86,10 +86,10 @@ class DBConnection
 	 */
 	function Connect()
 	{
-		$this->handler->Log(DBH_LOG_INFO, "Opening Connection...");
+		$this->handler->Log(DBH_LOG_INFO, "Abertura da conexão...");
 		if ($this->dbopen)
 		{
-			$this->handler->Log(DBH_LOG_WARNING, "Connection Already Open");
+			$this->handler->Log(DBH_LOG_WARNING, "Conexão já aberta");
 		}
 		else
 		{
@@ -102,7 +102,7 @@ class DBConnection
 				$this->handler->Crash(DatabaseException::$CONNECTION_ERROR,$ex->getMessage());
 			}
 
-			$this->handler->Log(DBH_LOG_INFO, "Connection Open");
+			$this->handler->Log(DBH_LOG_INFO, "Conexão Aberta");
 			$this->dbopen = true;
 		}
 	}
@@ -123,7 +123,7 @@ class DBConnection
 			}
 			else
 			{
-				$this->handler->Crash(DatabaseException::$CONNECTION_ERROR, "DB is not connected.  Please call DBConnection->Connect() first.");
+				$this->handler->Crash(DatabaseException::$CONNECTION_ERROR, "DB não está conectado. Por favor, ligue DBConnection->Connect() primeiro.");
 			}
 		}
 	}
@@ -135,17 +135,17 @@ class DBConnection
 	 */
 	function Disconnect()
 	{
-		$this->handler->Log(DBH_LOG_INFO, "Closing Connection...");
+		$this->handler->Log(DBH_LOG_INFO, "Fechando Conexão...");
 
 		if ($this->dbopen)
 		{
 			$this->adapter->Close();
 			$this->dbopen = false;
-			$this->handler->Log(DBH_LOG_INFO, "Connection closed");
+			$this->handler->Log(DBH_LOG_INFO, "Conexão fechada");
 		}
 		else
 		{
-			$this->handler->Log(DBH_LOG_WARNING, "Connection Already Closed");
+			$this->handler->Log(DBH_LOG_WARNING, "Conexão já está fechada");
 		}
 	}
 
@@ -160,7 +160,7 @@ class DBConnection
 	{
 		$this->RequireConnection(true);
 
-		$this->handler->Log(DBH_LOG_QUERY, "Executing Query", $sql);
+		$this->handler->Log(DBH_LOG_QUERY, "Executando consulta", $sql);
 		
 		return $this->adapter->Select($sql);
 	}
@@ -189,7 +189,7 @@ class DBConnection
 	{
 		$this->RequireConnection();
 		
-		$this->handler->Log(DBH_LOG_DEBUG, "Fetching next result as array");
+		$this->handler->Log(DBH_LOG_DEBUG, "Obtendo o próximo resultado como matriz");
 		return $this->adapter->Fetch($rs);
 
 	}
@@ -204,7 +204,7 @@ class DBConnection
 	{
 		$this->RequireConnection();
 
-		$this->handler->Log(DBH_LOG_DEBUG, "Releasing result resources");
+		$this->handler->Log(DBH_LOG_DEBUG, "Liberando recursos de resultados");
 		return $this->adapter->Release($rs);
 	}
 

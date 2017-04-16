@@ -1,4 +1,4 @@
-<?php namespace Laravel; defined('DS') or die('No direct script access.');
+<?php namespace Laravel; defined('DS') or die('Sem acesso direto ao script.');
 
 use Laravel\Routing\Router;
 use FilesystemIterator as fIterator;
@@ -87,7 +87,7 @@ class Bundle {
 
 		if ( ! static::exists($bundle))
 		{
-			throw new \Exception("Bundle [$bundle] has not been installed.");
+			throw new \Exception("Bundle [$bundle] não foi instalado.");
 		}
 
 		// Each bundle may have a start script which is responsible for preparing

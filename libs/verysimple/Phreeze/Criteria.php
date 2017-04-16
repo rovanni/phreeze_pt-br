@@ -477,7 +477,7 @@ class Criteria
 		}
 		catch (IncludeException $ex)
 		{
-			throw new Exception($ex->getMessage() . '.  If a map file does not exist then ' . get_class($this) . ' can implement GetFieldFromProp instead.');
+			throw new Exception($ex->getMessage() . '.  Se um arquivo de mapa não existir então ' . get_class($this) . ' pode implementar GetFieldFromProp em vez disso.');
 		}
 	}
 	
@@ -498,7 +498,7 @@ class Criteria
 	{
 		if (get_class($this) == "Criteria")
 		{
-			throw new Exception("Phreeze is unable to determine field mapping.  The base Criteria class should only be used to query by primary key without sorting");
+			throw new Exception("Phreeze é incapaz de determinar mapeamento de campo. A classe Criteria base só deve ser usada para consulta por chave primária sem classificação");
 		}
 
 		$fms = $this->GetFieldMaps();
@@ -506,7 +506,7 @@ class Criteria
 		// make sure this property is defined
 		if (!isset($fms[$propname]))
 		{
-			throw new Exception(get_class($this) . " is unable to determine the database column for the property: '$propname'");
+			throw new Exception(get_class($this) . " É incapaz de determinar a coluna de banco de dados para a propriedade: '$propname'");
 		}
 		//print_r($this->_fieldmaps);
 		$fm = $fms[$propname];
@@ -524,7 +524,7 @@ class Criteria
 	 */
 	public function __get($key)
 	{
-		if (!Phreezer::$COMPAT_VERSION_2) throw new Exception("Unknown property: $key");
+		if (!Phreezer::$COMPAT_VERSION_2) throw new Exception("Propriedade desconhecida: $key");
 	}
 	
 	/**
@@ -537,7 +537,7 @@ class Criteria
 	 */
 	public function __set($key,$val)
 	{
-		if (!Phreezer::$COMPAT_VERSION_2) throw new Exception("Unknown property: $key");
+		if (!Phreezer::$COMPAT_VERSION_2) throw new Exception("Propriedade desconhecida: $key");
 	}
 }
 

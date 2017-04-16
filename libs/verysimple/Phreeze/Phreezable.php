@@ -397,13 +397,13 @@ abstract class Phreezable implements Serializable
 					$limitLeft = (int)$limits[0] - $limitRight;
 					
 					if ($left > $limitLeft || $right > $limitRight) {
-						$this->AddValidationError($prop,"$prop exceeds the maximum length of " . $fm->FieldSize . "");
+						$this->AddValidationError($prop,"$prop excede o comprimento máximo " . $fm->FieldSize . "");
 					}
 					
 				}
 				elseif (is_numeric($fm->FieldSize) && ($lenfunction($this->$prop) > $fm->FieldSize))
 				{
-					$this->AddValidationError($prop,"$prop exceeds the maximum length of " . $fm->FieldSize . "");
+					$this->AddValidationError($prop,"$prop excede o comprimento máximo " . $fm->FieldSize . "");
 				}
 
 				if ($this->$prop == "" && ($fm->DefaultValue || $fm->IsAutoInsert) )
@@ -423,20 +423,20 @@ abstract class Phreezable implements Serializable
 						case FM_TYPE_DECIMAL:
 							if (!is_numeric($this->$prop))
 							{
-								$this->AddValidationError($prop,"$prop is not a valid number");
+								$this->AddValidationError($prop,"$prop não é um número válido");
 							}
 							break;
 						case FM_TYPE_DATE:
 						case FM_TYPE_DATETIME:
 							if (strtotime($this->$prop) === '')
 							{
-								$this->AddValidationError($prop,"$prop is not a valid date/time value.");
+								$this->AddValidationError($prop,"$prop não é um valor de data / hora válido.");
 							}
 							break;
 						case FM_TYPE_ENUM:
 							if ( !in_array($this->$prop, $fm->GetEnumValues()) )
 							{
-								$this->AddValidationError($prop,"$prop is not valid value. Allowed values: " . implode(', ',$fm->GetEnumValues()) );
+								$this->AddValidationError($prop,"$prop não é valor válido. Valores permitidos: " . implode(', ',$fm->GetEnumValues()) );
 							}
 							break;
 						default:
@@ -530,7 +530,7 @@ abstract class Phreezable implements Serializable
 		die();
 		*/
 
-		throw new Exception("No Primary Key found for " . get_class($this));
+		throw new Exception("Nenhuma chave primária encontrada para " . get_class($this));
     }
 
     /**
@@ -600,7 +600,7 @@ abstract class Phreezable implements Serializable
     {
 
         $fms = $this->_phreezer->GetFieldMaps(get_class($this));
-		$this->_phreezer->Observe("Loading " . get_class($this),OBSERVE_DEBUG);
+		$this->_phreezer->Observe("Carregando " . get_class($this),OBSERVE_DEBUG);
 
         $this->IsLoaded(true); // assume true until fail occurs
 		$this->IsPartiallyLoaded(false); // at least we tried
@@ -617,7 +617,7 @@ abstract class Phreezable implements Serializable
 			$newkey = isset($info[1]) ? ($info[1] . "." . $info[0]) : $info[0];
 			if (isset($rowlocal[$newkey]))
 			{
-				throw new Exception("The column `$newkey` was selected twice in the same query, causing a data collision");
+				throw new Exception("A coluna `$newkey` foi selecionada duas vezes na mesma consulta, causando uma colisão de dados");
 			}
 			$rowlocal[$newkey] = $val;
 
@@ -640,7 +640,7 @@ abstract class Phreezable implements Serializable
 			else
             {
                 // there is a required column missing from this $row array - mark as partially loaded
-                $this->_phreezer->Observe("Missing column '".$fm->ColumnName."' while loading " . get_class($this), OBSERVE_WARN);
+                $this->_phreezer->Observe("Faltando coluna '".$fm->ColumnName."' enquanto carrega " . get_class($this), OBSERVE_WARN);
                 $this->IsLoaded(false);
 				$this->IsPartiallyLoaded(true);
             }
@@ -774,7 +774,7 @@ abstract class Phreezable implements Serializable
     */
     public function __get($key)
     {
-        throw new Exception("Unknown property: $key");
+        throw new Exception("Propriedade desconhecida: $key");
     }
 
     /**
@@ -787,7 +787,7 @@ abstract class Phreezable implements Serializable
     */
     public function __set($key,$val)
     {
-        throw new Exception("Unknown property: $key");
+        throw new Exception("Propriedade desconhecida: $key");
     }
 
 }

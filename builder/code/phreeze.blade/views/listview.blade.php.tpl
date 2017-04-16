@@ -24,7 +24,7 @@
 		<i class="icon-th-list"></i> {$plural}
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
-			<input id='filter' type="text" placeholder="Search..." />
+			<input id='filter' type="text" placeholder="Pesquisar..." />
 			<button class='btn add-on'><i class="icon-search"></i></button>
 		</span>
 	</h1>
@@ -129,10 +129,10 @@
 				<div class="control-group">
 					<label class="control-label"></label>
 					<div class="controls">
-						<button id="delete{$singular}Button" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete {$singular}</button>
+						<button id="delete{$singular}Button" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Apagar {$singular}</button>
 						<span id="confirmDelete{$singular}Container" class="hide">
-							<button id="cancelDelete{$singular}Button" class="btn btn-mini">Cancel</button>
-							<button id="confirmDelete{$singular}Button" class="btn btn-mini btn-danger">Confirm</button>
+							<button id="cancelDelete{$singular}Button" class="btn btn-mini">Cancelar</button>
+							<button id="confirmDelete{$singular}Button" class="btn btn-mini btn-danger">Confirmar</button>
 						</span>
 					</div>
 				</div>
@@ -145,7 +145,7 @@
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">&times;</a>
 			<h3>
-				<i class="icon-edit"></i> Edit {$singular}
+				<i class="icon-edit"></i> Editar {$singular}
 				<span id="modelLoader" class="loader progress progress-striped active"><span class="bar"></span></span>
 			</h3>
 		</div>
@@ -154,8 +154,8 @@
 			<div id="{$singular|lcfirst}ModelContainer"></div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" >Cancel</button>
-			<button id="save{$singular}Button" class="btn btn-primary">Save Changes</button>
+			<button class="btn" data-dismiss="modal" >Cancelar</button>
+			<button id="save{$singular}Button" class="btn btn-primary">Salvar Mudanças</button>
 		</div>
 	</div>
 
@@ -165,7 +165,7 @@
 	</div>
 
 	<p id="newButtonContainer" class="buttonContainer">
-		<button id="new{$singular}Button" class="btn btn-primary">Add {$singular}</button>
+		<button id="new{$singular}Button" class="btn btn-primary">Cadastrar {$singular}</button>
 	</p>
 
 @endsection

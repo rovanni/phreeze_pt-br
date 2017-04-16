@@ -39,7 +39,7 @@ class MemCacheProxy extends CacheMemCache
 		}
 		else
 		{
-			$this->LastServerError = 'Memcache client module not installed';
+			$this->LastServerError = 'Memcache cliente módulo não instalado';
 			$this->ServerOffline = true;
 		}
 	}

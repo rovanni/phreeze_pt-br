@@ -92,7 +92,7 @@ abstract class BaseTestClass extends PHPUnit_Framework_TestCase
 	 */
 	protected function RemoveCompiledTemplateFiles()
 	{
-		$this->Println("-- Removing compiled template files...");
+		$this->Println("-- Removendo arquivos de modelos compilados...");
 
 		$path = COMPILE_PATH;
 		$dir = opendir($path);
@@ -137,7 +137,7 @@ abstract class BaseTestClass extends PHPUnit_Framework_TestCase
 	 */
 	protected function GetController()
 	{
-		if (!$this->controller) throw new Exception("InitController was not called in setUp()");
+		if (!$this->controller) throw new Exception("InitController não foi chamado em setUp()");
 		return $this->controller;
 	}
 
