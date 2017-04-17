@@ -154,7 +154,7 @@
 			<div id="{$singular|lcfirst}ModelContainer"></div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" >Cancelar</button>
+			<button class="btn" data-dismiss="modal">Cancelar</button>
 			<button id="save{$singular}Button" class="btn btn-primary">Salvar Mudanças</button>
 		</div>
 	</div>

@@ -15,7 +15,7 @@
 			<p>O aplicativo não se destina a ser usado como está, a menos que você queira apenas uma interface web simples para suas tabelas de dados e que você precise de algum tipo de autorização para acessar o aplicativo. Para converter isso em um aplicativo de trabalho real, você precisará personalizar cada página conforme necessário.
 			A filosofia por trás do código gerado automaticamente é gerar mais código do que você precisa. Você pode e deve excluir os controladores, métodos e visualizações que você não precisa.</p>
 
-	<h4>Controles de interface do usuário</h4>
+			<h4>Controles de interface do usuário</h4>
 
 			<p>Os controles de interface do usuário para campos de edição são gerados com base nos tipos de coluna do banco de dados.
 			No entanto, o gerador não conhece a <i> finalidade </i> de cada campo. Por exemplo, um campo INT pode ser melhor exibido como uma entrada regular, um controle deslizante ou uma chave liga/desliga. É possível que o campo não possa ser editado pelo usuário. O gerador não sabe essas coisas e por isso faz uma melhor suposição com base em tipos de coluna e tamanhos. É muito provável que você tenha de mudar os controles de interface do usuário que são melhores para sua aplicação. Bootstrap fornece um monte de controles de interface do usuário para você usar.</p>
@@ -34,7 +34,7 @@
 
 		</div>
 		<div class="modal-footer">
-			<button id="okButton" data-dismiss="modal" class="btn btn-primary">Let's Rock...</button>
+			<button id="okButton" data-dismiss="modal" class="btn btn-primary">Vamos arrasar...</button>
 		</div>
 	</div>
 

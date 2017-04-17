@@ -32,10 +32,10 @@
 			<fieldset>
 			<legend>Insira suas credenciais</legend>
 				<div class="control-group">
-				<input id="username" name="username" type="text" placeholder="Username..." />
+				<input id="username" name="username" type="text" placeholder="Nome de Usuário..." />
 				</div>
 				<div class="control-group">
-				<input id="password" name="password" type="password" placeholder="Password..." />
+				<input id="password" name="password" type="password" placeholder="Senha..." />
 				</div>
 				<div class="control-group">
 				<button type="submit" class="btn btn-primary">Entrar</button>
