@@ -133,7 +133,7 @@ class GeneratorController extends BaseController
 				{
 					$debug_output .= "\r\n###############################################################\r\n"
 					. "# $templateFilename\r\n###############################################################\r\n"
-					. "(contents of " . $codeRoot . $templateFile->source . ")\r\n";
+					. "(conteúdo de " . $codeRoot . $templateFile->source . ")\r\n";
 				}
 				else
 				{

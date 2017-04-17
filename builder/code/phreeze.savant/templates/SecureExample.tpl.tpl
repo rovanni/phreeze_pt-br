@@ -34,10 +34,10 @@
 			<fieldset>
 			<legend>Insira suas credenciais</legend>
 				<div class="control-group">
-				<input id="username" name="username" type="text" placeholder="Username..." />
+				<input id="username" name="username" type="text" placeholder="Nome do Usuário..." />
 				</div>
 				<div class="control-group">
-				<input id="password" name="password" type="password" placeholder="Password..." />
+				<input id="password" name="password" type="password" placeholder="Senha..." />
 				</div>
 				<div class="control-group">
 				<button type="submit" class="btn btn-primary">Login</button>
@@ -48,7 +48,7 @@
 	<?php } else { ?>
 	
 		<div class="hero-unit">
-			<h1>Seguro <?php $this->eprint($this->page == 'userpage' ? 'User' : 'Admin'); ?> Page</h1>
+			<h1>Página  <?php $this->eprint($this->page == 'userpage' ? 'User' : 'Admin'); ?> Segura</h1>
 			<p>Esta página é acessível somente para <?php $this->eprint($this->page == 'userpage' ? 'usuários autenticados' : 'Administradores'); ?>.  
 			Você está logado como '<strong><?php $this->eprint($this->currentUser->Username); ?></strong>'</p>
 			<p>

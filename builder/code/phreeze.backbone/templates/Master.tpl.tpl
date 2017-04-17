@@ -94,8 +94,8 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-lock"></i> Login <i class="caret"></i></a>
 								<ul class="dropdown-menu">
 									<li><a href="./loginform">Login</a></li>
-									<li><a href="./secureuser">Example User Page <i class="icon-lock"></i></a></li>
-									<li><a href="./secureadmin">Example Admin Page <i class="icon-lock"></i></a></li>
+									<li><a href="./secureuser">Exemplo de Página de Usuário <i class="icon-lock"></i></a></li>
+									<li><a href="./secureadmin">Exemplo de página de administração <i class="icon-lock"></i></a></li>
 								</ul>
 								</li>
 							</ul>

@@ -114,7 +114,7 @@ var view = {
 			});
 
 			// if this.el is null then it's likely that the collection view was initialized prior to document.ready firing
-			if (typeof(this.el) == 'undefined' && console) console.warn('CollectionView.render element is not defined.  Collection may not render properly.');
+			if (typeof(this.el) == 'undefined' && console) console.warn('CollectionView.render elemento não está definido. A coleção pode não ser processada corretamente.');
 
 			$(this.el).html(html);
 
@@ -252,7 +252,7 @@ var view = {
 			});
 
 			// if this.el is null then it's likely that the collection view was initialized prior to document.ready firing
-			if (typeof(this.el) == 'undefined' && console) console.warn('ModelView.render element is not defined.  Model may not render properly.');
+			if (typeof(this.el) == 'undefined' && console) console.warn('ModelView.render elemento não está definido. O modelo pode não ser processado adequadamente.');
 
 			$(this.el).html(html);
 

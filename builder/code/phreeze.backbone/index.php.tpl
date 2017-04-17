@@ -8,7 +8,7 @@ include_once("_app_config.php");
 
 if (!GlobalConfig::$CONNECTION_SETTING)
 {
-	throw new Exception('GlobalConfig::$CONNECTION_SETTING is not configured.  Are you missing _machine_config.php?');
+	throw new Exception('GlobalConfig::$CONNECTION_SETTING Não está configurado. Você está ausente _machine_config.php?');
 }
 
 /* require framework libs */
@@ -58,7 +58,7 @@ catch (exception $ex)
 		}
 		catch (Exception $ex2)
 		{
-			// this means there is an error with the template, in which case we can't display it nicely
+			// Isso significa que há um erro com o modelo, caso em que não podemos exibi-lo bem
 			echo "<style>* { font-family: verdana, arial, helvetica, sans-serif; }</style>\n";
 			echo "<h1>Erro fatal:</h1>\n";
 			echo '<h3>' . htmlentities($ex->getMessage()) . "</h3>\n";

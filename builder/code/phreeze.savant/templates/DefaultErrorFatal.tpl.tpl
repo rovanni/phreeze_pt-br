@@ -7,7 +7,7 @@
 
 <div class="container">
 
-	<h1>Oh Snap!</h1>
+	<h1>Oh não!</h1>
 
 	<!-- this is used by app.js for scraping -->
 	<!-- ERROR <?php $this->eprint($this->message); ?> /ERROR -->

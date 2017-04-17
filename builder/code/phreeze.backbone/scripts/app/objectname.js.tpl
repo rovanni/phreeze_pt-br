@@ -26,7 +26,7 @@ var page = {
 		if (page.isInitialized || page.isInitializing) return;
 		page.isInitializing = true;
 
-		if (!$.isReady && console) console.warn('page was initialized before dom is ready.  views may not render properly.');
+		if (!$.isReady && console) console.warn('Foi inicializada antes que o dom esteja pronto. As exibições podem não ser exibidas corretamente.');
 
 		// make the new button clickable
 		$("#new{$singular}Button").click(function(e) {

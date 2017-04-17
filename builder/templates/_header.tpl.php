@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<base href="<?php $this->eprint($this->ROOT_URL) ?>" />
-		<title>Phreeze | Builder</title>
+		<title>Phreeze | Construtor</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="Framework Phreeze para PHP - Construtor de aplicativos" />
 		<meta name="author" content="phreeze.com" />
@@ -31,7 +31,7 @@
 							<span class="icon-bar"></span>
 						</a>
 						<?php if (!isset($this->hidenav)) { ?>
-						<a class="brand" href="./"><img src="images/phreeze.png" alt="Phreeze" /> BUILDER</a>
+						<a class="brand" href="./"><img src="images/phreeze.png" alt="Phreeze" /> Construtor</a>
 						<?php } ?>
 						<div class="nav-collapse collapse">
 							<ul class="nav">

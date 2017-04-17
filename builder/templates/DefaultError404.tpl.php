@@ -1,7 +1,7 @@
 <?php include_once '_header.tpl.php'; ?>
 
-<h2>File Not Found</h2>
+<h2>Arquivo não encontrado</h2>
 
-<p>The page you requested was not found.  Please check that you typed the URL correctly.</p>
+<p>A página que você requisitou não foi encontrada. Verifique se você digitou o URL corretamente.</p>
 
 <?php include_once '_footer.tpl.php'; ?>

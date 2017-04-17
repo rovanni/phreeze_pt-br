@@ -83,7 +83,7 @@
 								<ul class="dropdown-menu">
 									<li><a href="./loginform">Login</a></li>
 									<li class="divider"></li>
-									<li><a href="./secureuser">Example User Page <i class="icon-lock"></i></a></li>
+									<li><a href="./secureuser">Exemplo de Página de Usuário <i class="icon-lock"></i></a></li>
 									<li><a href="./secureadmin">Example Admin Page <i class="icon-lock"></i></a></li>
 								</ul>
 								</li>

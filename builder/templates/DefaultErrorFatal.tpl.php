@@ -1,6 +1,6 @@
 <?php include_once '_header.tpl.php'; ?>
 
-<h1><i class="icon-cogs"></i> Oh Snap!</h1>
+<h1><i class="icon-cogs"></i> Oh não!</h1>
 
 <h2 onclick="$('#stacktrace').show('slow');" class="well" style="cursor: pointer;"><?php echo $this->eprint($this->message); ?></h2>
 

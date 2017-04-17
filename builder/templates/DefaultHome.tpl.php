@@ -11,7 +11,7 @@
 <form action="analyze" method="post" class="form-horizontal">
 	<fieldset class="well">
 		<div id="hostPortContainer" class="control-group">
-			<label class="control-label" for="host">MySQL endereço:Porta</label>
+			<label class="control-label" for="host">Endereço MySQL: Porta</label>
 			<div class="controls inline-inputs">
 				<input type="text" class="span2" id="host" name="host"  placeholder="example: localhost" /> :
 				<input type="text" class="span1" id="port" name="port" value="3306" />
@@ -42,7 +42,7 @@
 		<div id="usernameContainer" class="control-group">
 			<label class="control-label" for="username">MySQL nome de usuário</label>
 			<div class="controls inline-inputs">
-				<input type="text" class="span3" id="username" name="username" placeholder="" />
+				<input type="text" class="span3" id="username" name="username" placeholder="root" />
 				<span class="help-inline"></span>
 			</div>
 		</div>

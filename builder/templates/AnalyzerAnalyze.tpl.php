@@ -95,7 +95,7 @@
 	</tbody>
 	</table>
 
-	<h2><i class="icon-cogs"></i> Opções de Aplicação</h2>
+	<h2><i class="icon-cogs"></i> Opções da Aplicação</h2>
 
 	<p>Essas opções não precisam ser alteradas. A maioria deles simplesmente pre-fill uma configuração em um dos arquivos de configuração para que você não tem que editá-los manualmente para executar o aplicativo. Qualquer uma das opções abaixo pode ser alterada ou reconfigurada após o código ser gerado.</p>
 
@@ -126,7 +126,7 @@
 		</div>
 
 		<div id="appRootContainer" class="control-group">
-			<label class="control-label" for="appRoot">URL de raiz do aplicativo <i class="popover-icon icon-question-sign" 
+			<label class="control-label" for="appRoot">URL da raiz do aplicativo <i class="popover-icon icon-question-sign" 
 					data-title="URL de raiz do aplicativo" 
 					data-content="Seu aplicativo Phreeze deve saber sua localização de raiz, a fim de suportar URLs limpas. Você precisará garantir que este é o URL correto para seu aplicativo. Ao implantar seu aplicativo em outro servidor, esse valor precisará ser ajustado.<br/><br/>The GlobalConfig::$ROOT_URL setting is found in <code>_machine_config.php</code>"></i></label>
 			<div class="controls inline-inputs">

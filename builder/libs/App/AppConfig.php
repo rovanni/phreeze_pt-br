@@ -54,7 +54,7 @@ class AppConfig
 			if ($pair[0] == $name) return isset($pair[1]) ? $pair[1] : "";
 		}
 		
-		throw new Exception("UNKNOWN PROPERTY $name");
+		throw new Exception("PROPRIEDADE DESCONHECIDA $name");
 	}
 
 	/**
