@@ -1,5 +1,9 @@
 Phreeze 3.0 - Traduzido para (PT-BR)
+<<<<<<< HEAD
 ======================
+=======
+=======================================
+>>>>>>> 0ec4d5743a714d0b606d7e9caab3200c3aaf34d4
 
 
 Phreeze é um Framework ORM e MVC para PHP que inclui um gerador de código que cria um site limpo e funcional baseado em seu schema de banco de dados pré-existente.
