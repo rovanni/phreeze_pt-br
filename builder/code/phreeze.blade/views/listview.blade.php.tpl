@@ -24,7 +24,7 @@
 		<i class="icon-th-list"></i> {$plural}
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
-			<input id='filter' type="text" placeholder="Pesquisar..." />
+			<input id='filter' type="text" placeholder="Search..." />
 			<button class='btn add-on'><i class="icon-search"></i></button>
 		</span>
 	</h1>
@@ -154,7 +154,7 @@
 			<div id="{$singular|lcfirst}ModelContainer"></div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal">Cancelar</button>
+			<button class="btn" data-dismiss="modal" >Cancelar</button>
 			<button id="save{$singular}Button" class="btn btn-primary">Salvar Mudanças</button>
 		</div>
 	</div>

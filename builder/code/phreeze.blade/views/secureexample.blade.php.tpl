@@ -1,6 +1,6 @@
 @layout('Master')
 
-@section('title'){$appname} | Exemplo seguro@endsection
+@section('title'){$appname} | Secure Example@endsection
 
 @section('content')
 <div class="container">
@@ -18,7 +18,7 @@
 	
 		<div class="hero-unit">
 			<h1>Login Exemplo</h1>
-			<p>Este é um exemplo de autenticação Phreeze. As credenciais padrão são <strong>demo/pass</strong> e <strong>admin/pass</strong>.</p>
+			<p>Este é um exemplo de autenticação Phreeze. As credenciais padrão são <strong>demo/pass</strong> e <strong>.</p>
 			<p>
 				<a href="secureuser" class="btn btn-primary btn-large">Visitar página do usuário</a>
 				<a href="secureadmin" class="btn btn-primary btn-large">Visite a página de administrador</a>

@@ -54,7 +54,7 @@
 			{literal}Running on Phreeze {{$PHREEZE_VERSION}}@if($PHREEZE_PHAR) 
 			({{basename($PHREEZE_PHAR)}})@endif.</em></p>{/literal}
 			
-			<p><a class="btn btn-primary btn-large" data-toggle="modal" href="#getStartedDialog">Iniciar &raquo;</a></p>
+			<p><a class="btn btn-primary btn-large" data-toggle="modal" href="#getStartedDialog">Get Started &raquo;</a></p>
 		</div>
 
 		<!-- Example row of columns -->
@@ -62,17 +62,17 @@
 			<div class="span3">
 				<h2><i class="icon-cogs"></i> Phreeze</h2>
 				 <p>Phreeze é uma framework MVC + ORM para PHP que fornece roteamento de URL, acesso DB orientado a objetos e serviços RESTful JSON que são consumidos pela camada de visualização.</p>
-				<p><a class="btn" href="http://phreeze.com/">About Phreeze &raquo;</a></p>
+				<p><a class="btn" href="http://phreeze.com/">Sobre Phreeze &raquo;</a></p>
 			</div>
 			<div class="span3">
 				<h2><i class="icon-th"></i> Backbone</h2>
 				 <p>Backbone.js é uma estrutura de Javascript que é utilizada para fornecer modelos do lado do cliente, vinculação de modelo e persistência usando chamadas AJAX para os serviços RESTful do back-end.</p>
-				<p><a class="btn" href="http://documentcloud.github.com/backbone/">About Backbone &raquo;</a></p>
+				<p><a class="btn" href="http://documentcloud.github.com/backbone/">Sobre Backbone &raquo;</a></p>
 		 	</div>
 			<div class="span3">
 				<h2><i class="icon-twitter-sign"></i> Bootstrap</h2>
 				<p>O Bootstrap by Twitter fornece um layout limpo, cross-browser e componentes de interface de usuário. O Bootstrap é um kit completo de ferramentas de front-end com componentes funcionais prontos para uso.</p>
-				<p><a class="btn" href="http://twitter.github.com/bootstrap/">About Bootstrap &raquo;</a></p>
+				<p><a class="btn" href="http://twitter.github.com/bootstrap/">Sobre Bootstrap &raquo;</a></p>
 			</div>
 			<div class="span3">
 				<h2><i class="icon-signin"></i> Bibliotecas</h2>
