@@ -18,7 +18,7 @@
  */
 class PHPExcel_Shared_JAMA_QRDecomposition {
 
-	const MatrixRankException	= "Só pode executar a operação em matriz completa.";
+	const MatrixRankException	= "Can only perform operation on full-rank matrix.";
 
 	/**
 	 *	Array for internal storage of decomposition.

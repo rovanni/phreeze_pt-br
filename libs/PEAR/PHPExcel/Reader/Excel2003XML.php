@@ -129,10 +129,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 		if (!$this->canRead($pFilename)) {
-			throw new PHPExcel_Reader_Exception($pFilename . " é um arquivo de planilha inválido.");
+			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
 		}
 
 		$worksheetNames = array();
@@ -160,7 +160,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		$worksheetInfo = array();
@@ -323,11 +323,11 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		if (!$this->canRead($pFilename)) {
-			throw new PHPExcel_Reader_Exception($pFilename . " é um arquivo de planilha inválido.");
+			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
 		}
 
 		$xml = simplexml_load_file($pFilename);

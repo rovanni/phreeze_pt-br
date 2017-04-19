@@ -410,7 +410,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
 		$this->_openFile($pFilename);
 		if (!$this->_isValidFormat()) {
 			fclose ($this->_fileHandle);
-			throw new PHPExcel_Reader_Exception($pFilename . " é um arquivo HTML inválido.");
+			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid HTML file.");
 		}
 		//	Close after validating
 		fclose ($this->_fileHandle);
@@ -426,7 +426,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
 		//	Reload the HTML file into the DOM object
 		$loaded = $dom->loadHTMLFile($pFilename);
 		if ($loaded === FALSE) {
-			throw new PHPExcel_Reader_Exception('Falha ao carregar ',$pFilename,' como um Documento de DOM');
+			throw new PHPExcel_Reader_Exception('Failed to load ',$pFilename,' as a DOM Document');
 		}
 
 		//	Discard white space

@@ -701,7 +701,7 @@ if (!function_exists('money_format')) {
 		$locale = localeconv();
 		$number = floatval($number);
 		if (!preg_match($regex, $format, $fmatch)) {
-			trigger_error("Nenhum formato especificado ou formato inválido", E_USER_WARNING);
+			trigger_error("No format specified or invalid format", E_USER_WARNING);
 			return $number;
 		}
 		$flags = array( 'fillchar'	=> preg_match('/\=(.)/', $fmatch[1], $match) ? $match[1] : ' ',

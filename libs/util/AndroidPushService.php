@@ -75,7 +75,7 @@ class AndroidPushService
 			if ($result === FALSE)
 			{
 				$output->success = false;
-				$output->message = 'Erro de comunicação: Não foi possível entregar a mensagem';
+				$output->message = 'Communication Error: Unable to deliver message';
 			}
 			else
 			{

@@ -127,7 +127,7 @@ class PHPExcel_Style_Protection extends PHPExcel_Style_Supervisor implements PHP
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
+			throw new PHPExcel_Exception("Invalid style array passed.");
 		}
 		return $this;
 	}

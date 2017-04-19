@@ -93,7 +93,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
     	{
     		require_once("verysimple/Util/ExceptionFormatter.php");
     		$info = ExceptionFormatter::FormatTrace(debug_backtrace());
-    		$this->_phreezer->Observe("(DataSet.Next: Não é possível armazenar em cache a consulta com o cursor) " . $info . "  " . $this->_sql,OBSERVE_DEBUG);
+    		$this->_phreezer->Observe("(DataSet.Next: unable to cache query with cursor) " . $info . "  " . $this->_sql,OBSERVE_DEBUG);
 
     		// use this line to discover where an uncachable query is coming from
     		// throw new Exception("WTF");
@@ -110,7 +110,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
         if ($this->_eof)
         {
 			if (!$this->_no_exception)
-				throw new Exception("EOF: Este é um conjunto de dados apenas para a frente.");
+				throw new Exception("EOF: This is a forward-only dataset.");
         }
 
         if ($row = $this->_phreezer->DataAdapter->Fetch($this->_rs))
@@ -206,7 +206,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
 			// if no cache, go to the db
 			if ($this->_totalcount != null)
 			{
-				$this->_phreezer->Observe("DataSet.Count: ignorando consulta de conta porque o cache existe",OBSERVE_DEBUG);
+				$this->_phreezer->Observe("DataSet.Count: skipping count query because cache exists",OBSERVE_DEBUG);
 			}
 			else
 			{
@@ -218,12 +218,12 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
 				// if a custom counter sql query was provided, use that because it should be more efficient
 				if ($this->CountSQL)
 				{
-					$this->_phreezer->Observe("DataSet.Count: usando CountSQL para obter o número total de registros",OBSERVE_DEBUG);
+					$this->_phreezer->Observe("DataSet.Count: using CountSQL to obtain total number of records",OBSERVE_DEBUG);
 					$sql = $this->CountSQL;
 				}
 				else
 				{
-					$this->_phreezer->Observe("(DataSet.Count: CountSQL was not provided so a counter query will be generated.  Implementar GetCustomCountQuery na classe de repórter para melhorar o desempenho.)",OBSERVE_WARN);
+					$this->_phreezer->Observe("(DataSet.Count: CountSQL was not provided so a counter query will be generated.  Implement GetCustomCountQuery in the reporter class to improve performance.)",OBSERVE_WARN);
 					$sql = "select count(1) as counter from (" . $this->_sql . ") tmptable" . rand(1000,9999);
 				}
 
@@ -261,7 +261,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
 		if ($arr != null)
 		{
 			// we have a cache value, so we will repopulate from that
-			$this->_phreezer->Observe("(DataSet.ToObjectArray: ignorando a consulta porque o cache existe) " . $this->_sql,OBSERVE_DEBUG);
+			$this->_phreezer->Observe("(DataSet.ToObjectArray: skipping query because cache exists) " . $this->_sql,OBSERVE_DEBUG);
 			if (!$asSimpleObject)
 			{
 				foreach ($arr as $obj)
@@ -342,7 +342,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
 		// if no cache, go to the db
 		if ($arr != null)
 		{
-			$this->_phreezer->Observe("(DataSet.GetLabelArray: ignorando a consulta porque o cache existe) " . $this->_sql,OBSERVE_QUERY);
+			$this->_phreezer->Observe("(DataSet.GetLabelArray: skipping query because cache exists) " . $this->_sql,OBSERVE_QUERY);
 		}
 		else
 		{
@@ -400,7 +400,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
 		// if no cache, go to the db
 		if ($page != null)
 		{
-			$this->_phreezer->Observe("(DataSet.GetDataPage: ignorando a consulta porque o cache existe) " . $this->_sql,OBSERVE_QUERY);
+			$this->_phreezer->Observe("(DataSet.GetDataPage: skipping query because cache exists) " . $this->_sql,OBSERVE_QUERY);
 
 			foreach ($page->Rows as $obj)
 			{
@@ -511,7 +511,7 @@ class DataSet implements Iterator // @TODO implement Countable, ArrayAccess
     	$counter = 1;
 		while ( $counter < 4 && $obj == null && $this->IsLocked($cachekey) )
 		{
-			$this->_phreezer->Observe("(DataSet.GetDelayedCache: prevenção de inundações. Tentativa atrasada ".$counter." of 3...) " . $cachekey,OBSERVE_DEBUG);
+			$this->_phreezer->Observe("(DataSet.GetDelayedCache: flood prevention. delayed attempt ".$counter." of 3...) " . $cachekey,OBSERVE_DEBUG);
 			usleep(50000); // 5/100th of a second
 			$obj = $this->_phreezer->GetValueCache($cachekey);
 			$counter++;

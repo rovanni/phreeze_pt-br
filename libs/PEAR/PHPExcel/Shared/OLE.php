@@ -97,18 +97,18 @@ class PHPExcel_Shared_OLE
 	{
 		$fh = fopen($file, "r");
 		if (!$fh) {
-			throw new PHPExcel_Reader_Exception("Não é possível abrir o arquivo $file");
+			throw new PHPExcel_Reader_Exception("Can't open file $file");
 		}
 		$this->_file_handle = $fh;
 
 		$signature = fread($fh, 8);
 		if ("\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1" != $signature) {
-			throw new PHPExcel_Reader_Exception("Arquivo não parece ser um recipiente OLE.");
+			throw new PHPExcel_Reader_Exception("File doesn't seem to be an OLE container.");
 		}
 		fseek($fh, 28);
 		if (fread($fh, 2) != "\xFE\xFF") {
 			// This shouldn't be a problem in practice
-			throw new PHPExcel_Reader_Exception("Somente a codificação Little-Endian é suportada.");
+			throw new PHPExcel_Reader_Exception("Only Little-Endian encoding is supported.");
 		}
 		// Size of blocks and short blocks in bytes
 		$this->bigBlockSize = pow(2, self::_readInt2($fh));
@@ -509,7 +509,7 @@ class PHPExcel_Shared_OLE
 	public static function OLE2LocalDate($string)
 	{
 		if (strlen($string) != 8) {
-			return new PEAR_Error("Esperando uma sequência de 8 bytes");
+			return new PEAR_Error("Expecting 8 byte string");
 		}
 
 		// factor used for separating numbers into 4 bytes parts

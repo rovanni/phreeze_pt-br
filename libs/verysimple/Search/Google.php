@@ -174,7 +174,7 @@ class Google extends SearchEngine
 
 				if ($counter > 2)
 				{
-					throw new Exception("Tentou entrar em contato com a API do Google $counter vezes sem sucesso:" . $ex->getMessage());
+					throw new Exception("Tried to contact Google API $counter times without success:" . $ex->getMessage());
 				}
 
 			}

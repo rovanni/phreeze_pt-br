@@ -184,7 +184,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
 		$this->_openFile($pFilename);
 		if (!$this->_isValidFormat()) {
 			fclose ($this->_fileHandle);
-			throw new PHPExcel_Reader_Exception($pFilename . " é um arquivo de planilha inválido.");
+			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
 		}
 		$fileHandle = $this->_fileHandle;
 		
@@ -248,7 +248,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
 		$this->_openFile($pFilename);
 		if (!$this->_isValidFormat()) {
 			fclose ($this->_fileHandle);
-			throw new PHPExcel_Reader_Exception($pFilename . " é um arquivo de planilha inválido.");
+			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
 		}
 		$fileHandle = $this->_fileHandle;
 

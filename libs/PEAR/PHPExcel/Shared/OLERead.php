@@ -77,7 +77,7 @@ class PHPExcel_Shared_OLERead {
 	{
 		// Check if file exists and is readable
 		if(!is_readable($sFileName)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $sFileName . " para ler! O arquivo não existe ou não é legível.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $sFileName . " for reading! File does not exist, or it is not readable.");
 		}
 
 		// Get the file identifier
@@ -86,7 +86,7 @@ class PHPExcel_Shared_OLERead {
 
 		// Check OLE identifier
 		if ($this->data != self::IDENTIFIER_OLE) {
-			throw new PHPExcel_Reader_Exception('O nome do arquivo ' . $sFileName . ' não é reconhecido como um arquivo OLE');
+			throw new PHPExcel_Reader_Exception('The filename ' . $sFileName . ' is not recognised as an OLE file');
 		}
 
 		// Get the file data

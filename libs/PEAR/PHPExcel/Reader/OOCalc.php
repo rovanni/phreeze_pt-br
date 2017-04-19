@@ -71,7 +71,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		// Check if zip class exists
@@ -121,12 +121,12 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		$zip = new ZipArchive;
 		if (!$zip->open($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Erro ao abrir o arquivo.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! Error opening file.");
 		}
 
 		$worksheetNames = array();
@@ -171,14 +171,14 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		$worksheetInfo = array();
 
 		$zip = new ZipArchive;
 		if (!$zip->open($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Erro ao abrir o arquivo.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! Error opening file.");
 		}
 
 		$xml = new XMLReader();
@@ -325,7 +325,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 	{
 		// Check if file exists
 		if (!file_exists($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Arquivo não existe.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! File does not exist.");
 		}
 
 		$timezoneObj = new DateTimeZone('Europe/London');
@@ -333,7 +333,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
 
 		$zip = new ZipArchive;
 		if (!$zip->open($pFilename)) {
-			throw new PHPExcel_Reader_Exception("Não foi possível abrir " . $pFilename . " para ler! Erro ao abrir o arquivo.");
+			throw new PHPExcel_Reader_Exception("Could not open " . $pFilename . " for reading! Error opening file.");
 		}
 
 //		echo '<h1>Meta Information</h1>';

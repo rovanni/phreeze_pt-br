@@ -179,7 +179,7 @@ class PHPExcel_Style_Alignment extends PHPExcel_Style_Supervisor implements PHPE
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
+			throw new PHPExcel_Exception("Invalid style array passed.");
 		}
 		return $this;
 	}
@@ -283,7 +283,7 @@ class PHPExcel_Style_Alignment extends PHPExcel_Style_Supervisor implements PHPE
 				$this->_textRotation = $pValue;
 			}
 		} else {
-			throw new PHPExcel_Exception("A rotação do texto deve ser um valor entre -90 e 90.");
+			throw new PHPExcel_Exception("Text rotation should be a value between -90 and 90.");
 		}
 
 		return $this;

@@ -18,7 +18,7 @@ http://0x00.org/php/phpApplication/
 			$this->umask = $umask;
 
 			if (!$this->_openfile()) {
-				$this->_error("Erro ao abrir o arquivo de armazenamento", E_USER_WARNING);
+				$this->_error("Error opening storage file", E_USER_WARNING);
 			}
 		}
 

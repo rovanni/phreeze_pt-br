@@ -27,11 +27,11 @@ if (!defined('PHPEXCEL_ROOT')) {
 class PHPExcel_Shared_JAMA_Matrix {
 
 
-	const PolymorphicArgumentException	= "Padrão de argumento inválido para função polimórfica.";
-	const ArgumentTypeException			= "Tipo de argumento inválido.";
-	const ArgumentBoundsException		= "Intervalo de argumento inválido.";
-	const MatrixDimensionException		= "As dimensões da matriz não são iguais.";
-	const ArrayLengthException			= "O comprimento da matriz deve ser um múltiplo de m.";
+	const PolymorphicArgumentException	= "Invalid argument pattern for polymorphic function.";
+	const ArgumentTypeException			= "Invalid argument type.";
+	const ArgumentBoundsException		= "Invalid argument range.";
+	const MatrixDimensionException		= "Matrix dimensions are not equal.";
+	const ArrayLengthException			= "Array length must be a multiple of m.";
 
 	/**
 	 *	Matrix storage

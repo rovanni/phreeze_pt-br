@@ -48,7 +48,7 @@ class PayPal extends PaymentProcessor
 			if (!$req->RefundAmount)
 			{
 				$resp->IsSuccess = false;
-				$resp->ResponseMessage = "RefundAmount é necessário para o reembolso parcial";
+				$resp->ResponseMessage = "RefundAmount is required for partial refund";
 				return $resp;
 			}
 			$nvpStr .= "&REFUNDTYPE=Partial&AMT=" . urldecode($req->RefundAmount);
@@ -134,7 +134,7 @@ class PayPal extends PaymentProcessor
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "0";
-			$resp->ResponseMessage = "Nenhum número de cartão de crédito fornecido";
+			$resp->ResponseMessage = "No Credit Card Number Provided";
 			return $resp;
 		}
 
@@ -142,7 +142,7 @@ class PayPal extends PaymentProcessor
 		{
 			$resp->IsSuccess = false;
 			$resp->ResponseCode = "0";
-			$resp->ResponseMessage = "Nenhum Nome do titular do cartão fornecido";
+			$resp->ResponseMessage = "No Cardholder Name Provided";
 			return $resp;
 		}
 
@@ -381,7 +381,7 @@ class PayPal extends PaymentProcessor
 	 */
 	private function getProcessorResponseDescription($code)
 	{
-		return "A transação foi rejeitada pelo banco emissor com código de erro $code.";
+		return "Transaction was rejected by the issuing bank with error code $code.";
 
 		// @TODO these have proven to be unreliable, but maybe somebody can do something better?
 		/*

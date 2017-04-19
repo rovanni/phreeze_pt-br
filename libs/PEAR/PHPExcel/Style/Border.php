@@ -125,7 +125,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
 			case '_inside':
 			case '_outline':
 			case '_vertical':
-				throw new PHPExcel_Exception('Não é possível obter o componente compartilhado para uma pseudo-borda.');
+				throw new PHPExcel_Exception('Cannot get shared component for a pseudo-border.');
 				break;
 			case '_bottom':
 				return $this->_parent->getSharedComponent()->getBottom();		break;
@@ -205,7 +205,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
 				}
 			}
 		} else {
-			throw new PHPExcel_Exception("Matriz de estilos inválida passada.");
+			throw new PHPExcel_Exception("Invalid style array passed.");
 		}
 		return $this;
 	}

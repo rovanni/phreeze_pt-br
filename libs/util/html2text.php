@@ -28,7 +28,7 @@ function convert_html_to_text($html) {
 
 	$doc = new DOMDocument();
 	if (!$doc->loadHTML($html))
-		throw new Html2TextException("Não foi possível carregar o HTML - mal formado?", $html);
+		throw new Html2TextException("Could not load HTML - badly formed?", $html);
 
 	$output = iterate_over_node($doc);
 

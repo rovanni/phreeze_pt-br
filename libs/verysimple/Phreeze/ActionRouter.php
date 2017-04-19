@@ -121,7 +121,7 @@ class ActionRouter implements IRouter
 
 		if ( !$controller_param )
 		{
-			throw new Exception("Parâmetro de controlador inválido ou ausente");
+			throw new Exception("Invalid or missing Controller parameter");
 		}
 
 		$method_param = isset($params[1]) && $params[1] ? $params[1] : "";

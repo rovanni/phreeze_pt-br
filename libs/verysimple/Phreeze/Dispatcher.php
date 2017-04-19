@@ -121,7 +121,7 @@ class Dispatcher
 				}
 			}
 	
-			if (!$found) throw new Exception("File ~/libs/".$controller_file." Não foi encontrado no caminho include");
+			if (!$found) throw new Exception("File ~/libs/".$controller_file." was not found in include path");
 	
 			// convert any php errors into an exception
 			if (self::$IGNORE_DEPRECATED)
@@ -140,7 +140,7 @@ class Dispatcher
 			// we found the file but the expected class doesn't appear to be defined
 			if (!class_exists($controller_class))
 			{
-				throw new Exception("O arquivo do controlador foi encontrado, mas a classe '".$controller_class."' não está definido");
+				throw new Exception("Controller file was found, but class '".$controller_class."' is not defined");
 			}
 		}
 
@@ -151,7 +151,7 @@ class Dispatcher
 		// we have a valid instance, just verify there is a matching method
 		if (!is_callable(array($controller, $method_param)))
 		{
-			throw new Exception("'".$controller_class.".".$method_param."' não é uma ação válida");
+			throw new Exception("'".$controller_class.".".$method_param."' is not a valid action");
 		}
 
 		// do not call the requested method/route if the controller request has been cancelled

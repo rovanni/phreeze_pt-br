@@ -40,16 +40,16 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 	const STATUS_CODE_INTERNAL_ERROR = 999; /**< @type integer Status code for internal error (not Apple). */
 
 	protected $_aErrorResponseMessages = array(
-		0   => 'Nenhum erro encontrado',
-		1   => 'Erro de processamento',
-		2   => 'Token de dispositivo ausente',
-		3   => 'Tópico ausente',
-		4   => 'Carga útil ausente',
-		5   => 'Tamanho de token inválido',
-		6   => 'Tamanho do tópico inválido',
-		7   => 'Tamanho da carga útil inválido',
-		8   => 'Token inválido',
-		self::STATUS_CODE_INTERNAL_ERROR => 'Erro interno'
+		0   => 'No errors encountered',
+		1   => 'Processing error',
+		2   => 'Missing device token',
+		3   => 'Missing topic',
+		4   => 'Missing payload',
+		5   => 'Invalid token size',
+		6   => 'Invalid topic size',
+		7   => 'Invalid payload size',
+		8   => 'Invalid token',
+		self::STATUS_CODE_INTERNAL_ERROR => 'Internal error'
 	); /**< @type array Error-response messages. */
 
 	protected $_nSendRetryTimes = 3; /**< @type integer Send retry times. */
@@ -121,20 +121,20 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 	{
 		if (!$this->_hSocket) {
 			throw new ApnsPHP_Push_Exception(
-				'Não conectado ao serviço Push Notification'
+				'Not connected to Push Notification Service'
 			);
 		}
 
 		if (empty($this->_aMessageQueue)) {
 			throw new ApnsPHP_Push_Exception(
-				'Não há notificações em fila para serem enviadas'
+				'No notifications queued to be sent'
 			);
 		}
 
 		$this->_aErrors = array();
 		$nRun = 1;
 		while (($nMessages = count($this->_aMessageQueue)) > 0) {
-			$this->_log("INFO: Enviando fila de mensagens, execute #{$nRun}: $nMessages mensagem (s) deixada (s) na fila.");
+			$this->_log("INFO: Sending messages queue, run #{$nRun}: $nMessages message(s) left in queue.");
 
 			$bError = false;
 			foreach($this->_aMessageQueue as $k => &$aMessage) {
@@ -150,18 +150,18 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 				if (!empty($aMessage['ERRORS'])) {
 					foreach($aMessage['ERRORS'] as $aError) {
 						if ($aError['statusCode'] == 0) {
-							$this->_log("INFO: ID da mensagem {$k} {$sCustomIdentifier} não tem erro ({$aError['statusCode']}), removendo da fila...");
+							$this->_log("INFO: Message ID {$k} {$sCustomIdentifier} has no error ({$aError['statusCode']}), removing from queue...");
 							$this->_removeMessageFromQueue($k);
 							continue 2;
 						} else if ($aError['statusCode'] > 1 && $aError['statusCode'] <= 8) {
-							$this->_log("AVISO: ID da mensagem {$k} {$sCustomIdentifier} tem um erro irrecuperável ({$aError['statusCode']}), removendo da fila sem tentar novamente...");
+							$this->_log("WARNING: Message ID {$k} {$sCustomIdentifier} has an unrecoverable error ({$aError['statusCode']}), removing from queue without retrying...");
 							$this->_removeMessageFromQueue($k, true);
 							continue 2;
 						}
 					}
 					if (($nErrors = count($aMessage['ERRORS'])) >= $this->_nSendRetryTimes) {
 						$this->_log(
-							"AVISO: ID da mensagem {$k} {$sCustomIdentifier} tem {$nErrors} erros, removendo da fila..."
+							"WARNING: Message ID {$k} {$sCustomIdentifier} has {$nErrors} errors, removing from queue..."
 						);
 						$this->_removeMessageFromQueue($k, true);
 						continue;
@@ -169,14 +169,14 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 				}
 
 				$nLen = strlen($aMessage['BINARY_NOTIFICATION']);
-				$this->_log("STATUS: Enviando ID da mensagem {$k} {$sCustomIdentifier} (" . ($nErrors + 1) . "/{$this->_nSendRetryTimes}): {$nLen} bytes.");
+				$this->_log("STATUS: Sending message ID {$k} {$sCustomIdentifier} (" . ($nErrors + 1) . "/{$this->_nSendRetryTimes}): {$nLen} bytes.");
 
 				$aErrorMessage = null;
 				if ($nLen !== ($nWritten = (int)@fwrite($this->_hSocket, $aMessage['BINARY_NOTIFICATION']))) {
 					$aErrorMessage = array(
 						'identifier' => $k,
 						'statusCode' => self::STATUS_CODE_INTERNAL_ERROR,
-						'statusMessage' => sprintf('%s (%d bytes escritos em vez de %d bytes)',
+						'statusMessage' => sprintf('%s (%d bytes written instead of %d bytes)',
 							$this->_aErrorResponseMessages[self::STATUS_CODE_INTERNAL_ERROR], $nWritten, $nLen
 						)
 					);
@@ -194,7 +194,7 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 				$null = NULL;
 				$nChangedStreams = @stream_select($read, $null, $null, 0, $this->_nSocketSelectTimeout);
 				if ($nChangedStreams === false) {
-					$this->_log('ERRO: Não é possível aguardar uma disponibilidade de fluxo.');
+					$this->_log('ERROR: Unable to wait for a stream availability.');
 					break;
 				} else if ($nChangedStreams > 0) {
 					$bError = $this->_updateQueue();
@@ -372,12 +372,12 @@ class ApnsPHP_Push extends ApnsPHP_Abstract
 	{
 		if (!is_numeric($nMessageID) || $nMessageID <= 0) {
 			throw new ApnsPHP_Push_Exception(
-				'O formato ID da mensagem não é válido.'
+				'Message ID format is not valid.'
 			);
 		}
 		if (!isset($this->_aMessageQueue[$nMessageID])) {
 			throw new ApnsPHP_Push_Exception(
-				"O ID da mensagem {$nMessageID} não existe."
+				"The Message ID {$nMessageID} does not exists."
 			);
 		}
 		if ($bError) {

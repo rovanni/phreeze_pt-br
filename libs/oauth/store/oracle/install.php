@@ -23,6 +23,6 @@ vinaykant.sahu@gmail.com
 
  */
 
-echo 'Neste momento, não temos o instalador do Oracle DB.
-Encontre a pasta OracleDB aqui com esta Tabela, Sequências e Procedimentos. Você precisa instalar/criar o esquema DB e SP manualmente com o seu banco de dados oracle. ';
+echo 'Right now we do not have Oracle DB installer.
+Please find OracleDB folder here with this Table, Sequences and Procedures. You need to manually install/create DB schema and SP with your oracle DB. ';
 ?>

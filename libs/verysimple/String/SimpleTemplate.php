@@ -140,7 +140,7 @@ class SimpleTemplate
 	{
 		self::$_MERGE_TEMPLATE_VALUES = $values;
 		
-		if ($ldelim != "{{" || $rdelim != "}}") throw new Exception("Delimitadores personalizados ainda não estão implementados. Desculpa!");
+		if ($ldelim != "{{" || $rdelim != "}}") throw new Exception("Custom delimiters are not yet implemented. Sorry!");
 		
 		$results = preg_replace_callback('!\{\{(\w+)\}\}!', 'SimpleTemplate::_MergeRegExCallback', $template);
 		

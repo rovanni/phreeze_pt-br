@@ -85,7 +85,7 @@ class OAuthBodyMultipartFormdata
 					$data = @file_get_contents($f['file']);
 					if ($data === false)
 					{
-						throw new OAuthException2(sprintf('Não foi possível ler o ficheiro "%s" para a parte de dados de formulário', $f['file']));
+						throw new OAuthException2(sprintf('Could not read the file "%s" for form-data part', $f['file']));
 					}
 					if (empty($filename))
 					{

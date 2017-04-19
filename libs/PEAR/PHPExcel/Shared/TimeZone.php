@@ -117,7 +117,7 @@ class PHPExcel_Shared_TimeZone
 	public static function getTimeZoneAdjustment($timezone, $timestamp) {
 		if ($timezone !== NULL) {
 			if (!self::_validateTimezone($timezone)) {
-				throw new PHPExcel_Exception("Fuso horário inválido " . $timezone);
+				throw new PHPExcel_Exception("Invalid timezone " . $timezone);
 			}
 		} else {
 			$timezone = self::$_timezone;

@@ -59,7 +59,7 @@ function xrds_parse ( $data )
 	$doc   = @DOMDocument::loadXML($data);
 	if ($doc === false)
 	{
-		throw new Exception('Erro no XML, não é possível carregar o documento XRDS');
+		throw new Exception('Error in XML, can\'t load XRDS document');
 	}
 	
 	$xpath = new DOMXPath($doc);

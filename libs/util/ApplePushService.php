@@ -27,17 +27,17 @@ class ApplePushService
 	private $sandboxMode;
 	
 	public static $ERRORS = array(
-		0   => '', // Sem erros encontrados
-		1   => 'Erro de processamento',
-		2   => 'Símbolo de dispositivo ausente',
-		3   => 'Falta de tópico',
-		4   => 'Falta de carga útil',
-		5   => 'Tamanho de token inválido',
-		6   => 'Tamanho do tópico inválido',
-		7   => 'Tamanho de carga útil inválido',
-		8   => 'Sinal inválido',
-		10   => 'Desligar',
-		255   => 'Desconhecido'
+		0   => '', // No errors encountered
+		1   => 'Processing error',
+		2   => 'Missing device token',
+		3   => 'Missing topic',
+		4   => 'Missing payload',
+		5   => 'Invalid token size',
+		6   => 'Invalid topic size',
+		7   => 'Invalid payload size',
+		8   => 'Invalid token',
+		10   => 'Shutdown',
+		255   => 'Unknown'
 	);
 	
 	/**
@@ -104,7 +104,7 @@ class ApplePushService
 		if ($errorMesssage || !$fh)
 		{
 			$output->success = false;
-			$output->message = "Falha na conexão: $errorMesssage";
+			$output->message = "Connection Failed: $errorMesssage";
 		}
 		else
 		{
@@ -140,11 +140,11 @@ class ApplePushService
 				if (!$response) {
 					// everything is cool
 					$output->success = true;
-					$output->message = 'Mensagem enviada';
+					$output->message = 'Message sent';
 				}
 				else {
 					$output->success = false;
-					$output->message = 'Falha na notificação de envio com a resposta: ' . $response;
+					$output->message = 'Push notification failed with response: ' . $response;
 				}
 			}
 			catch (Exception $ex)

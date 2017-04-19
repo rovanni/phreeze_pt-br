@@ -75,7 +75,7 @@ class ApnsPHP_Message
 	{
 		if (!preg_match('~^[a-f0-9]{64}$~i', $sDeviceToken)) {
 			throw new ApnsPHP_Message_Exception(
-				"Símbolo de dispositivo inválido '{$sDeviceToken}'"
+				"Invalid device token '{$sDeviceToken}'"
 			);
 		}
 		$this->_aDeviceTokens[] = $sDeviceToken;
@@ -93,7 +93,7 @@ class ApnsPHP_Message
 	{
 		if (!isset($this->_aDeviceTokens[$nRecipient])) {
 			throw new ApnsPHP_Message_Exception(
-				"Nenhum destinatário no índice '{$nRecipient}'"
+				"No recipient at index '{$nRecipient}'"
 			);
 		}
 		return $this->_aDeviceTokens[$nRecipient];
@@ -150,7 +150,7 @@ class ApnsPHP_Message
 	{
 		if (!is_int($nBadge)) {
 			throw new ApnsPHP_Message_Exception(
-				"Número de crachá inválido '{$nBadge}'"
+				"Invalid badge number '{$nBadge}'"
 			);
 		}
 		$this->_nBadge = $nBadge;
@@ -219,7 +219,7 @@ class ApnsPHP_Message
 	{
 		if (!is_bool($bContentAvailable)) {
 			throw new ApnsPHP_Message_Exception(
-				"Valor disponível no conteúdo inválido '{$bContentAvailable}'"
+				"Invalid content-available value '{$bContentAvailable}'"
 			);
 		}
 		$this->_bContentAvailable = $bContentAvailable ? true : null;
@@ -247,7 +247,7 @@ class ApnsPHP_Message
 	{
 		if (trim($sName) == self::APPLE_RESERVED_NAMESPACE) {
 			throw new ApnsPHP_Message_Exception(
-				"Nome da propriedade '" . self::APPLE_RESERVED_NAMESPACE . "' não pode ser usado para propriedades personalizadas."
+				"Property name '" . self::APPLE_RESERVED_NAMESPACE . "' can not be used for custom property."
 			);
 		}
 		$this->_aCustomProperties[trim($sName)] = $mValue;
@@ -310,7 +310,7 @@ class ApnsPHP_Message
 	{
 		if (!array_key_exists($sName, $this->_aCustomProperties)) {
 			throw new ApnsPHP_Message_Exception(
-				"Nenhuma propriedade existe com o nome especificado '{$sName}'."
+				"No property exists with the specified name '{$sName}'."
 			);
 		}
 		return $this->_aCustomProperties[$sName];
@@ -419,13 +419,13 @@ class ApnsPHP_Message
 					return $this->getPayload();
 				} else {
 					throw new ApnsPHP_Message_Exception(
-						"JSON A carga útil é muito longa: {$nJSONPayloadLen} bytes. O tamanho máximo é " .
+						"JSON Payload is too long: {$nJSONPayloadLen} bytes. Maximum size is " .
 						self::PAYLOAD_MAXIMUM_SIZE . " bytes. The message text can not be auto-adjusted."
 					);
 				}
 			} else {
 				throw new ApnsPHP_Message_Exception(
-					"JSON A carga útil é muito longa: {$nJSONPayloadLen} bytes. O tamanho máximo é " .
+					"JSON Payload is too long: {$nJSONPayloadLen} bytes. Maximum size is " .
 					self::PAYLOAD_MAXIMUM_SIZE . " bytes"
 				);
 			}
@@ -444,7 +444,7 @@ class ApnsPHP_Message
 	{
 		if (!is_int($nExpiryValue)) {
 			throw new ApnsPHP_Message_Exception(
-				"Número de segundos inválido '{$nExpiryValue}'"
+				"Invalid seconds number '{$nExpiryValue}'"
 			);
 		}
 		$this->_nExpiryValue = $nExpiryValue;

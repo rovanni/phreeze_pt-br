@@ -271,7 +271,7 @@ class PHPExcel_Shared_Font
 		try {
 			// If autosize method is set to 'approx', use approximation
 			if (self::$autoSizeMethod == self::AUTOSIZE_METHOD_APPROX) {
-				throw new PHPExcel_Exception('O método AutoSize está definido para aprox.');
+				throw new PHPExcel_Exception('AutoSize method is set to approx');
 			}
 
 			// Width of text in pixels excl. padding
@@ -306,7 +306,7 @@ class PHPExcel_Shared_Font
 	 */
 	public static function getTextWidthPixelsExact($text, PHPExcel_Style_Font $font, $rotation = 0) {
 		if (!function_exists('imagettfbbox')) {
-			throw new PHPExcel_Exception('A biblioteca GD precisa ser ativada');
+			throw new PHPExcel_Exception('GD library needs to be enabled');
 		}
 
 		// font size should really be supplied in pixels in GD2,
@@ -425,7 +425,7 @@ class PHPExcel_Shared_Font
 	 */
 	public static function getTrueTypeFontFileFromFont($font) {
 		if (!file_exists(self::$trueTypeFontPath) || !is_dir(self::$trueTypeFontPath)) {
-			throw new PHPExcel_Exception('Diretório válido para TrueType Arquivos de fontes não especificados');
+			throw new PHPExcel_Exception('Valid directory to TrueType Font files not specified');
 		}
 
 		$name		= $font->getName();
@@ -530,7 +530,7 @@ class PHPExcel_Shared_Font
 				break;
 
 			default:
-				throw new PHPExcel_Exception('Nome de fonte desconhecido "'. $name .'". Não é possível mapear para o arquivo de fonte TrueType');
+				throw new PHPExcel_Exception('Unknown font name "'. $name .'". Cannot map to TrueType font file');
 				break;
 		}
 
@@ -538,7 +538,7 @@ class PHPExcel_Shared_Font
 
 		// Check if file actually exists
 		if (!file_exists($fontFile)) {
-			throw New PHPExcel_Exception('TrueType arquivo de fonte não encontrado');
+			throw New PHPExcel_Exception('TrueType Font file not found');
 		}
 
 		return $fontFile;
