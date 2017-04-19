@@ -78,7 +78,7 @@
 							</ul>
 							<ul class="nav">
 								<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mais <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 {/if}
 								<li {ldelim}if $nav=='{$tableInfos[$table->Name]['plural']|lower}'{rdelim} class="active"{ldelim}/if{rdelim}><a href="./{$tableInfos[$table->Name]['plural']|lower}">{$tableInfos[$table->Name]['plural']}</a></li>

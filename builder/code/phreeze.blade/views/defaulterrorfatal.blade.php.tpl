@@ -6,12 +6,12 @@
 @section('content')
 <div class="container">
 
-	<h1>Oh não!</h1>
+	<h1>Oh Não!</h1>
 
 	<!-- this is used by app.js for scraping -->
 	<!-- ERROR {{htmlentities($message)}} /ERROR -->
 
-	<h2><i class="icon-cogs"></i> Oh não!</h2>
+	<h2><i class="icon-cogs"></i> Oh Não!</h2>
 
 	<h3 onclick="$('#stacktrace').show('slow');" class="well" style="cursor: pointer;">{{htmlentities($message)}}</h3>
 

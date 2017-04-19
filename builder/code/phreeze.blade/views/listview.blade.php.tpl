@@ -24,7 +24,7 @@
 		<i class="icon-th-list"></i> {$plural}
 		<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 		<span class='input-append pull-right searchContainer'>
-			<input id='filter' type="text" placeholder="Search..." />
+			<input id='filter' type="text" placeholder="Pesquisar..." />
 			<button class='btn add-on'><i class="icon-search"></i></button>
 		</span>
 	</h1>
@@ -38,7 +38,7 @@
 		<thead>
 			<tr>
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}<!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS -->
+{if $smarty.foreach.columnsForEach.index == 5}<!-- DESCOMENTE PARA MOSTRAR COLUNAS ADICIONAIS -->
 <!--
 {/if}
 				<th id="header_{$column->NameWithoutPrefix|studlycaps}">{$column->NameWithoutPrefix|underscore2space}<% if (page.orderBy == '{$column->NameWithoutPrefix|studlycaps}') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
@@ -51,7 +51,7 @@
 		<% items.each(function(item) {ldelim} %>
 			<tr id="<%= _.escape(item.get('{$table->GetPrimaryKeyName()|studlycaps|lcfirst}')) %>">
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}<!-- uncomment to show additional colums -->
+{if $smarty.foreach.columnsForEach.index == 5}<!-- DESCOMENTE PARA MOSTRAR COLUNAS ADICIONAIS -->
 <!--
 {/if}
 {if $column->Type == "date"}

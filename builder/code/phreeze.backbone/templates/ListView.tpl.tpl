@@ -40,7 +40,7 @@
 		<thead>
 			<tr>
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}{ldelim}* UNCOMMENT TO SHOW ADDITIONAL COLUMNS *{rdelim}
+{if $smarty.foreach.columnsForEach.index == 5}{ldelim}* DESCOMENTE PARA MOSTRAR COLUNAS ADICIONAIS *{rdelim}
 {ldelim}*
 {/if}
 				<th id="header_{$column->NameWithoutPrefix|studlycaps}">{$column->NameWithoutPrefix|underscore2space}<% if (page.orderBy == '{$column->NameWithoutPrefix|studlycaps}') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
@@ -53,7 +53,7 @@
 		<% items.each(function(item) {ldelim} %>
 			<tr id="<%= _.escape(item.get('{$table->GetPrimaryKeyName()|studlycaps|lcfirst}')) %>">
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}{ldelim}* uncomment to show additional colums *{rdelim}
+{if $smarty.foreach.columnsForEach.index == 5}{ldelim}* descomente para mostrar colunas adicionais *{rdelim}
 {ldelim}*
 {/if}
 {if $column->Type == "date"}

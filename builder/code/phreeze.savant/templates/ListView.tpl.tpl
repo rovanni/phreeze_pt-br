@@ -24,18 +24,18 @@
 	<i class="icon-th-list"></i> {$plural}
 	<span id=loader class="loader progress progress-striped active"><span class="bar"></span></span>
 	<span class='input-append pull-right searchContainer'>
-		<input id='filter' type="text" placeholder="Search..." />
+		<input id='filter' type="text" placeholder="Pesquisar..." />
 		<button class='btn add-on'><i class="icon-search"></i></button>
 	</span>
 </h1>
 
-	<!-- underscore template for the collection -->
+	<!-- Modelo de sublinhado para a coleção -->
 	<script type="text/template" id="{$singular|lcfirst}CollectionTemplate">
 		<table class="collection table table-bordered table-hover">
 		<thead>
 			<tr>
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}<!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
+{if $smarty.foreach.columnsForEach.index == 5}<!-- DESCOMENTE PARA MOSTRAR COLUNAS ADICIONAIS
 {/if}
 				<th id="header_{$column->NameWithoutPrefix|studlycaps}">{$column->NameWithoutPrefix|underscore2space}<% if (page.orderBy == '{$column->NameWithoutPrefix|studlycaps}') { %> <i class='icon-arrow-<%= page.orderDesc ? 'up' : 'down' %>' /><% } %></th>
 {/foreach}
@@ -47,7 +47,7 @@
 		<% items.each(function(item) {ldelim} %>
 			<tr id="<%= _.escape(item.get('{$table->GetPrimaryKeyName()|studlycaps|lcfirst}')) %>">
 {foreach from=$table->Columns item=column name=columnsForEach}
-{if $smarty.foreach.columnsForEach.index == 5}<!-- UNCOMMENT TO SHOW ADDITIONAL COLUMNS
+{if $smarty.foreach.columnsForEach.index == 5}<!-- DESCOMENTE PARA MOSTRAR COLUNAS ADICIONAIS
 {/if}
 {if $column->Type == "date"}
 				<td><%if (item.get('{$column->NameWithoutPrefix|studlycaps|lcfirst}')) { %><%= _date(app.parseDate(item.get('{$column->NameWithoutPrefix|studlycaps|lcfirst}'))).format('MMM D, YYYY') %><% } else { %>NULL<% } %></td>
@@ -69,7 +69,7 @@
 		<%=  view.getPaginationHtml(page) %>
 	</script>
 
-	<!-- underscore template for the model -->
+	<!-- Modelo de sublinhado para a coleção -->
 	<script type="text/template" id="{$singular|lcfirst}ModelTemplate">
 		<form class="form-horizontal" onsubmit="return false;">
 			<fieldset>
@@ -118,7 +118,7 @@
 			</fieldset>
 		</form>
 
-		<!-- delete button is is a separate form to prevent enter key from triggering a delete -->
+		<!-- O botão de exclusão é um formulário separado para impedir que a tecla Enter acione uma exclusão -->
 		<form id="delete{$singular}ButtonContainer" class="form-horizontal" onsubmit="return false;">
 			<fieldset>
 				<div class="control-group">
@@ -135,7 +135,7 @@
 		</form>
 	</script>
 
-	<!-- modal edit dialog -->
+	<!-- Diálogo de edição modal -->
 	<div class="modal hide fade" id="{$singular|lcfirst}DetailDialog">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">&times;</a>

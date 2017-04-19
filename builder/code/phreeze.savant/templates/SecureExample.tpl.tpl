@@ -22,10 +22,10 @@
 			<h1>Login Exemplo</h1>
 			<p>Este é um exemplo de autenticação Phreeze. As credenciais padrão são <strong>demo/pass</strong> e <strong>admin/pass</strong>.</p>
 			<p>
-				<a href="secureuser" class="btn btn-primary btn-large">Visit User Page</a>
-				<a href="secureadmin" class="btn btn-primary btn-large">Visit Admin Page</a>
+				<a href="secureuser" class="btn btn-primary btn-large">Visitar página do usuário</a>
+				<a href="secureadmin" class="btn btn-primary btn-large">Visite a página de administrador</a>
 				<?php if (isset($this->currentUser)) { ?>
-					<a href="logout" class="btn btn-primary btn-large">Logout</a>
+					<a href="logout" class="btn btn-primary btn-large">Sair</a>
 				<?php } ?>
 			</p>
 		</div>
