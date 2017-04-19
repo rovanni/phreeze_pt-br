@@ -30,7 +30,7 @@
 			<h4>Modelos</h4>
 
 			<p>Vários arquivos de modelo foram criados para cada tabela no aplicativo.
-			Os arquivos de modelo estão localizados em /libs /Model/.
+			Os arquivos de modelo estão localizados em /libs/Model/.
 			Se suas alterações de esquema você pode gerar novamente somente os arquivos DAO (objeto de acesso a dados) selecionando o pacote DAO-Only no construtor de classe. Contanto que você não toque em arquivos na pasta /libs/Model/DAO/, então você pode com segurança fazer alterações em seu esquema de banco de dados e gerar código sem perder nenhuma de suas personalizações.</p>
 
 		</div>
